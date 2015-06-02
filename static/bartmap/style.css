@@ -1,0 +1,133 @@
+#bartmap { 
+  position: relative; 
+  /*margin: 20px 0 20px 40px;*/
+  /*padding: 5px 0; width: 300px;*/
+  width: 1100px;
+  height: 1000px;
+  background-image: url(images/map.png); 
+  background-repeat: no-repeat; 
+  background-size: 100%;
+}
+
+.station {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background-color: transparent; 
+  border: 1px solid purple;
+}
+
+#richmond {
+  top: 146px;
+  left: 305px;
+}
+
+#el-cerrito-del-norte { 
+  top: 165px; 
+  left: 317px; 
+}
+
+#el-cerrito-plaza { 
+  top: 190px; 
+  left: 335px; 
+}
+
+#north-berkeley { 
+  top: 218px; 
+  left: 355px; 
+}
+
+#downtown-berkeley { 
+  top: 240px; 
+  left: 371px; 
+}
+
+#ashby { 
+  top: 260px; 
+  left: 384px; 
+}
+
+#macarthur { 
+  top: 299px; 
+  left: 397px; 
+}
+
+#nineteenth-st-oakland { 
+  top: 322px; 
+  left: 396px; 
+}
+
+#twelfth-st-oakland { 
+  top: 347px;
+  left: 395px; 
+}
+
+#west-oakland { 
+  top: 370px; 
+  left: 343px; 
+}
+
+#embarcadero { 
+  top: 401px; 
+  left: 229px; 
+}
+
+#montgomery-st { 
+  top: 415px; 
+  left: 218px; 
+}
+
+#powell-st { 
+  top: 430px; 
+  left: 208px; 
+}
+
+#civic-center { 
+  top: 445px; 
+  left: 199px; 
+}
+
+#sixteenth-st-mission { 
+  top: 461px; 
+  left: 188px; 
+}
+
+#twentyfourth-st-mission { 
+  top: 479px; 
+  left: 176px; 
+}
+
+#glen-park { 
+  top: 494px; 
+  left: 166px; 
+}
+
+#balboa-park { 
+  top: 510px; 
+  left: 156px; 
+}
+
+#daly-city { 
+  top: 543px; 
+  left: 140px; 
+}
+
+#colma { 
+  top: 572px; 
+  left: 155px; 
+}
+
+#south-san-francisco { 
+  top: 600px; 
+  left: 174px; 
+}
+
+#san-bruno { 
+  top: 636px; 
+  left: 199px; 
+}
+
+#millbrae { 
+  top: 707px; 
+  left: 248px; 
+}
