@@ -131,3 +131,381 @@
   top: 707px; 
   left: 248px; 
 }
+
+.train-marker {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: transparent; 
+  border: 1px solid green;
+}
+
+#rich-deln-0 {
+  top: 149px;
+  left: 308px;
+}
+
+#rich-deln-1 {
+  top: 155px;
+  left: 312px;
+}
+
+#rich-deln-2{
+  top: 160px;
+  left: 315px;
+}
+
+#rich-deln-3 {
+  top: 164px;
+  left: 318px;
+}
+
+#deln-plza-0 {
+  top: 169px; 
+  left: 322px; 
+}
+
+#deln-plza-1 {
+  top: 178px; 
+  left: 329px; 
+}
+
+#deln-plza-2 {
+  top: 186px; 
+  left: 334px; 
+}
+
+#plza-nbrk-0 {
+  top: 194px; 
+  left: 340px; 
+}
+
+#plza-nbrk-1 {
+  top: 200px; 
+  left: 344px; 
+}
+
+#plza-nbrk-2 {
+  top: 205px; 
+  left: 347px; 
+}
+
+#plza-nbrk-3 {
+  top: 212px; 
+  left: 352px; 
+}
+
+#nbrk-dbrk-0 {
+  top: 221px; 
+  left: 359px; 
+}
+
+#nbrk-dbrk-1 {
+  top: 233px;; 
+  left: 367px; 
+}
+
+#dbrk-ashb-0 {
+  top: 243px; 
+  left: 374px; 
+}
+
+#dbrk-ashb-1 {
+  top: 253px; 
+  left: 381px; 
+}
+
+#ashb-mcar-0 {
+  top: 263px; 
+  left: 388px; 
+}
+
+#ashb-mcar-1 {
+  top: 278px; 
+  left: 398px; 
+}
+
+#ashb-mcar-2 {
+  top: 288px; 
+  left: 401px; 
+}
+
+#mcar-19th-0 {
+  top: 301px; 
+  left: 401px; 
+}
+
+#mcar-19th-1 {
+  top: 305px; 
+  left: 401px; 
+}
+
+#mcar-19th-2 {
+  top: 313px; 
+  left: 401px; 
+}
+
+#mcar-19th-3 {
+  top: 319px; 
+  left: 401px; 
+}
+
+#n19th-12th-0 {
+  top: 326px; 
+  left: 399px; 
+}
+
+#n19th-12th-1 {
+  top: 338px; 
+  left: 399px; 
+}
+
+#n12th-woak-0 {
+  top: 351px;
+  left: 398px; 
+}
+
+#n12th-woak-1 {
+  top: 363px;
+  left: 392px; 
+}
+
+#n12th-woak-2 {
+  top: 368px;
+  left: 382px; 
+}
+
+#n12th-woak-3 {
+  top: 370px;
+  left: 371px; 
+}
+
+#n12th-woak-4 {
+  top: 372px;
+  left: 360px; 
+}
+
+#woak-embr-0 {
+  top: 374px; 
+  left: 346px; 
+}
+
+#woak-embr-1 {
+  top: 377px; 
+  left: 330px; 
+}
+
+#woak-embr-2 {
+  top: 380px; 
+  left: 316px; 
+}
+
+#woak-embr-3 {
+  top: 382px; 
+  left: 304px; 
+}
+
+#woak-embr-4 {
+  top: 384px; 
+  left: 290px; 
+}
+
+#woak-embr-5 {
+  top: 386px; 
+  left: 277px; 
+}
+
+#woak-embr-6 {
+  top: 388px; 
+  left: 264px; 
+}
+
+#woak-embr-7 {
+  top: 392px; 
+  left: 250px; 
+}
+
+#embr-mont-0 {
+  top: 405px; 
+  left: 232px; 
+}
+
+#embr-mont-1 {
+  top: 412px; 
+  left: 227px; 
+}
+
+#mont-powl-0 {
+  top: 419px; 
+  left: 221px; 
+}
+
+#mont-powl-1 {
+  top: 426px; 
+  left: 217px; 
+}
+
+#powl-civc-0 {
+  top: 433px; 
+  left: 212px; 
+}
+
+#powl-civc-1 {
+  top: 441px; 
+  left: 207px; 
+}
+
+#civc-16th-0 {
+  top: 448px; 
+  left: 202px; 
+}
+
+#civc-16th-1 {
+  top: 456px; 
+  left: 198px; 
+}
+
+#n16th-24th-0 {
+  top: 465px; 
+  left: 191px; 
+}
+
+#n16th-24th-1 {
+  top: 473px; 
+  left: 186px; 
+}
+
+#n24th-glen-0 {
+  top: 483px; 
+  left: 179px; 
+}
+
+#n24th-glen-1 {
+  top: 488px; 
+  left: 176px; 
+}
+
+#n24th-glen-2 {
+  top: 493px; 
+  left: 172px; 
+}
+
+#glen-balb-0 {
+  top: 498px; 
+  left: 169px; 
+}
+
+#glen-balb-1 {
+  top: 507px; 
+  left: 164px; 
+}
+
+#balb-daly-0 {
+  top: 514px; 
+  left: 158px; 
+}
+
+#balb-daly-1 {
+  top: 522px; 
+  left: 153px; 
+}
+
+#balb-daly-2 {
+  top: 530px; 
+  left: 148px; 
+}
+
+#balb-daly-3 {
+  top: 537px; 
+  left: 145px; 
+}
+
+#daly-colm-0 {
+  top: 547px; 
+  left: 143px; 
+}
+
+#daly-colm-1 {
+  top: 556px; 
+  left: 145px; 
+}
+
+#daly-colm-2 {
+  top: 561px; 
+  left: 148px; 
+}
+
+#daly-colm-3 {
+  top: 566px; 
+  left: 152px; 
+}
+
+#colm-ssan-0 {
+  top: 576px; 
+  left: 158px; 
+}
+
+#colm-ssan-1 {
+  top: 584px; 
+  left: 164px; 
+}
+
+#colm-ssan-2 {
+  top: 592px; 
+  left: 170px; 
+}
+
+#ssan-sbrn-0 {
+  top: 604px; 
+  left: 178px; 
+}
+
+#ssan-sbrn-1 {
+  top: 615px; 
+  left: 185px; 
+}
+
+#ssan-sbrn-2 {
+  top: 623px; 
+  left: 191px; 
+}
+
+#ssan-sbrn-3 {
+  top: 629px; 
+  left: 195px; 
+}
+
+#sbrn-mlbr-0 {
+  top: 639px; 
+  left: 203px; 
+}
+
+#sbrn-mlbr-1 {
+  top: 655px; 
+  left: 213px; 
+}
+
+#sbrn-mlbr-2 {
+  top: 665px; 
+  left: 220px; 
+}
+
+#sbrn-mlbr-3 {
+  top: 675px; 
+  left: 227px; 
+}
+
+#sbrn-mlbr-4 {
+  top: 686px; 
+  left: 235px; 
+}
+
+#sbrn-mlbr-5 {
+  top: 696px; 
+  left: 242px; 
+}
+
+#sbrn-mlbr-6 {
+  top: 710px; 
+  left: 252px; 
+}
