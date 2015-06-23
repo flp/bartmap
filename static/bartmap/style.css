@@ -1,7 +1,5 @@
 #bartmap { 
   position: relative; 
-  /*margin: 20px 0 20px 40px;*/
-  /*padding: 5px 0; width: 300px;*/
   width: 1100px;
   height: 1000px;
   background-image: url(images/map.png); 
@@ -14,7 +12,7 @@
   width: 13px;
   height: 13px;
   background-color: transparent; 
-  border: 1px solid purple;
+  /*border: 1px solid purple;*/
 }
 
 #richmond {
@@ -137,7 +135,7 @@
   width: 6px;
   height: 6px;
   background-color: transparent; 
-  border: 1px solid green;
+  /*border: 1px solid green;*/
 }
 
 #rich-deln-0 {
@@ -508,4 +506,10 @@
 #sbrn-mlbr-6 {
   top: 710px; 
   left: 252px; 
+}
+
+.train-icon {
+  position: absolute;
+  width: 17px;
+  height: 17px;
 }

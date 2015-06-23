@@ -2,12 +2,13 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'bartmap/style.css' %}" />
-  <script type="text/javascript" src="{% static 'bartmap/jquery-1.11.3.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'bartmap/main.js' %}"></script>
 </head>
 
 <body>
   <div id="bartmap">
+    <img class="train-icon" src="{% static 'bartmap/train_icon.png' %}" />
     <a class="station" id="richmond"></a>
     <div class="train-marker" id="rich-deln-0"></div>
     <div class="train-marker" id="rich-deln-1"></div>
