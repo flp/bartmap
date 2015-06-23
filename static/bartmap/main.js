@@ -87,11 +87,11 @@ var adjacentStationsDictionary = {
   "west-oakland":
     new AdjacentStations("twelfth-st-oakland", null, "embarcadero", null),
   "embarcadero":
-    new AdjacentStations("west-oakland", null, "montgomery", null),
-  "montgomery":
+    new AdjacentStations("west-oakland", null, "montgomery-st", null),
+  "montgomery-st":
     new AdjacentStations("embarcadero", null, "powell-st", null),
   "powell-st":
-    new AdjacentStations("montgomery", null, "civic-center", null),
+    new AdjacentStations("montgomery-st", null, "civic-center", null),
   "civic-center":
     new AdjacentStations("powell-st", null, "sixteenth-st-mission", null),
   "sixteenth-st-mission":
@@ -148,11 +148,11 @@ var stationEstimatesDictionary = {
   "west-oakland_embarcadero": 8,
   "embarcadero_west-oakland": 8,
 
-  "embarcadero_montgomery": 2,
-  "montgomery_embarcadero": 2,
+  "embarcadero_montgomery-st": 2,
+  "montgomery-st_embarcadero": 2,
 
-  "montgomery_powell-st": 2,
-  "powell-st_montgomery": 2,
+  "montgomery-st_powell-st": 2,
+  "powell-st_montgomery-st": 2,
 
   "powell-st_civic-center": 2,
   "civic-center_powell-st": 2,
@@ -248,7 +248,7 @@ function parseBartXML(xmlData) {
 }
 
 function showStationInfo(xmlData) {
-  estimates = parseBartXML(xmlData);
+  var estimates = parseBartXML(xmlData);
   console.log("Fetched estimates for {0}.".format(estimates[0].stationName));
 }
 
@@ -316,9 +316,14 @@ function getAdjacentRedTrainsTEST(stationName) {
  * Dictionary mapping stations to train spots data.
  *
  * Data is in the form of dictionaries mapping destinations to arrays of ids. Arrays are ordered by
- * distance to station in nondescending order.
+ * distance to station in descending order.
  */
 var trainSpotsDictionary = {
+  'richmond': // end-of-line station
+    {
+      'millbrae': ['deln-plza-0', 'rich-deln-3', 'rich-deln-2', 'rich-deln-1'],
+      'richmond': []
+    },
   'el-cerrito-del-norte':
     {
       'millbrae': ['rich-deln-0', 'rich-deln-1', 'rich-deln-2', 'rich-deln-3'],
@@ -339,6 +344,98 @@ var trainSpotsDictionary = {
       'millbrae': ['nbrk-dbrk-0', 'nbrk-dbrk-1'],
       'richmond': ['ashb-mcar-0', 'dbrk-ashb-1']
     },
+  'ashby':
+    {
+      'millbrae': ['dbrk-ashb-0', 'dbrk-ashb-1'],
+      'richmond': ['mcar-19th-0', 'ashb-mcar-2', 'ashb-mcar-1', 'ashb-mcar-0']
+    },
+  'macarthur':
+    {
+      'millbrae': ['ashb-mcar-0', 'ashb-mcar-1', 'ashb-mcar-2'],
+      'richmond': ['n19th-12th-0', 'mcar-19th-3', 'mcar-19th-2', 'mcar-19th-1']
+    },
+  'nineteenth-st-oakland':
+    {
+      'millbrae': ['mcar-19th-0', 'mcar-19th-1', 'mcar-19th-2', 'mcar-19th-3'],
+      'richmond': ['n12th-woak-0', 'n19th-12th-1']
+    },
+  'twelfth-st-oakland':
+    {
+      'millbrae': ['n19th-12th-0', 'n19th-12th-1'],
+      'richmond': ['woak-embr-0', 'n12th-woak-4', 'n12th-woak-3', 'n12th-woak-2', 'n12th-woak-1']
+    },
+  'west-oakland':
+    {
+      'millbrae': ['n12th-woak-0', 'n12th-woak-1', 'n12th-woak-2', 'n12th-woak-3', 'n12th-woak-4'],
+      'richmond': ['embr-mont-0', 'woak-embr-7', 'woak-embr-6', 'woak-embr-5', 'woak-embr-4',
+                   'woak-embr-3', 'woak-embr-2', 'woak-embr-1']
+    },
+  'embarcadero':
+    {
+      'millbrae': ['woak-embr-0', 'woak-embr-1', 'woak-embr-2', 'woak-embr-3', 'woak-embr-4',
+                   'woak-embr-5', 'woak-embr-6', 'woak-embr-7'],
+      'richmond': ['mont-powl-0', 'embr-mont-1']
+    },
+  'montgomery-st':
+    {
+      'millbrae': ['embr-mont-0', 'embr-mont-1'],
+      'richmond': ['powl-civc-0', 'mont-powl-1']
+    },
+  'powell-st':
+    {
+      'millbrae': ['mont-powl-0', 'mont-powl-1'],
+      'richmond': ['civc-16th-0', 'powl-civc-1']
+    },
+  'civic-center':
+    {
+      'millbrae': ['powl-civc-0', 'powl-civc-1'],
+      'richmond': ['n16th-24th-0', 'civc-16th-1']
+    },
+  'sixteenth-st-mission':
+    {
+      'millbrae': ['civc-16th-0', 'civc-16th-1'],
+      'richmond': ['n24th-glen-0', 'n16th-24th-1']
+    },
+  'twentyfourth-st-mission':
+    {
+      'millbrae': ['n16th-24th-0', 'n16th-24th-1'],
+      'richmond': ['glen-balb-0', 'n24th-glen-2', 'n24th-glen-1'],
+    },
+  'glen-park':
+    {
+      'millbrae': ['n24th-glen-0', 'n24th-glen-1', 'n24th-glen-2'],
+      'richmond': ['balb-daly-0', 'glen-balb-1']
+    },
+  'balboa-park':
+    {
+      'millbrae': ['glen-balb-0', 'glen-balb-1'],
+      'richmond': ['daly-colm-0', 'balb-daly-3', 'balb-daly-2', 'balb-daly-1']
+    },
+  'daly-city':
+    {
+      'millbrae': ['balb-daly-0', 'balb-daly-1', 'balb-daly-2', 'balb-daly-3'],
+      'richmond': ['colm-ssan-0', 'daly-colm-3', 'daly-colm-2', 'daly-colm-1']
+    },
+  'colma':
+    {
+      'millbrae': ['daly-colm-0', 'daly-colm-1', 'daly-colm-2', 'daly-colm-3'],
+      'richmond': ['ssan-sbrn-0', 'colm-ssan-2', 'colm-ssan-1']
+    },
+  'south-san-francisco':
+    {
+      'millbrae': ['colm-ssan-0', 'colm-ssan-1', 'colm-ssan-2'],
+      'richmond': ['sbrn-mlbr-0', 'ssan-sbrn-3', 'ssan-sbrn-2', 'ssan-sbrn-1']
+    },
+  'san-bruno':
+    {
+      'millbrae': ['ssan-sbrn-0', 'ssan-sbrn-1', 'ssan-sbrn-2', 'ssan-sbrn-3'],
+      'richmond': ['sbrn-mlbr-6', 'sbrn-mlbr-5', 'sbrn-mlbr-4', 'sbrn-mlbr-3', 'sbrn-mlbr-2', 'sbrn-mlbr-1']
+    },
+  'millbrae': // end-of-line station
+    {
+      'millbrae': [],
+      'richmond': ['sbrn-mlbr-0', 'sbrn-mlbr-1', 'sbrn-mlbr-2', 'sbrn-mlbr-3', 'sbrn-mlbr-4', 'sbrn-mlbr-5']
+    }
 }
 
 function getTrainSpots(station) {
@@ -350,7 +447,7 @@ function getTrainSpots(station) {
    *
    * Returns:
    *   Dictionary mapping destinations to arrays of ids. Arrays are ordered by distance to
-   *   station in nondescending order.
+   *   station in descending order.
    */ 
    return trainSpotsDictionary[station];
 }
@@ -369,11 +466,11 @@ function getLiveTrainSpots(station, estimates) {
   // TODO: currently, two trains can be drawn on the same spot and will overlap one another.
   // there should be some way to tell that two trains are at the same spot, going opposite
   // directions.
-  console.log("Number of estimates for {0}: {1}".format(station, estimates.length));
+  // console.log("Number of estimates for {0}: {1}".format(station, estimates.length));
   var ids = [];
   var adjacentRedTrains = getAdjacentRedTrains(station, estimates);
-  console.log("Number of adjacent estimates for {0}: {1}".format(
-    station, adjacentRedTrains['millbrae'].length + adjacentRedTrains['richmond'].length));
+  // console.log("Number of adjacent estimates for {0}: {1}".format(
+    // station, adjacentRedTrains['millbrae'].length + adjacentRedTrains['richmond'].length));
   var trainSpots = getTrainSpots(station);
   var adjacentStations = adjacentStationsDictionary[station];
 
@@ -386,15 +483,30 @@ function getLiveTrainSpots(station, estimates) {
   var avgSouthTime = stationEstimatesDictionary[key];
 
   // Use the adjacent estimates and train spots to figure out where to draw trains.
-  for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
-    var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
-    var index = avgNorthTime - estMinutes;
-    ids.push(trainSpots['millbrae'][index]);
-  }
-  for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
-    var estMinutes = adjacentRedTrains['richmond'][i].minutes;
-    var index = avgSouthTime - estMinutes;
-    ids.push(trainSpots['millbrae'][index]);
+  // Need to check for end-of-line stations. E.g. trains going into Richmond are bound for
+  // Millbrae but they are going north.
+  if (station == 'richmond' || station == 'millbrae') { // end-of-line stations
+    for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
+      var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
+      var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
+      ids.push(trainSpots['millbrae'][index]);
+    }
+    for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
+      var estMinutes = adjacentRedTrains['richmond'][i].minutes;
+      var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
+      ids.push(trainSpots['richmond'][index]);
+    }
+  } else { // all other stations
+    for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
+      var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
+      var index = avgNorthTime - estMinutes;
+      ids.push(trainSpots['millbrae'][index]);
+    }
+    for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
+      var estMinutes = adjacentRedTrains['richmond'][i].minutes;
+      var index = avgSouthTime - estMinutes;
+      ids.push(trainSpots['richmond'][index]);
+    }  
   }
 
   return ids;
@@ -427,10 +539,7 @@ function run() {
   /**
    * Main event loop.
    */
-  stationsToTest = ["el-cerrito-del-norte", 
-                    "el-cerrito-plaza", 
-                    "north-berkeley", 
-                    "downtown-berkeley"];
+  stations = Object.keys(stationDictionary);
 
   function logAdjacentTrains(stationName) {
 
@@ -460,9 +569,9 @@ function run() {
   }
 
   // console.log("BEGIN NEW DATA");
-  // for (var i = 0; i < stationsToTest.length; i++) {
-  //   stationName = stationsToTest[i];
-  //   stationAbbr = stationDictionary[stationsToTest[i]];
+  // for (var i = 0; i < stations.length; i++) {
+  //   stationName = stations[i];
+  //   stationAbbr = stationDictionary[stations[i]];
   // }
 
   function drawAdjacentTrains(station) {
@@ -472,7 +581,7 @@ function run() {
       // get adjacent train estimates
       var estimates = parseBartXML(xmlData);
       var drawIds = getLiveTrainSpots(station, estimates);
-      console.log("CSS ids to draw for {0}: {1}".format(station, drawIds));
+      // console.log("CSS ids to draw for {0}: {1}".format(station, drawIds));
 
       // draw on the draw spots
       drawTrains(drawIds);
@@ -483,9 +592,9 @@ function run() {
   
   // TODO: gather all train data in a single request
   clearTrains();
-  for (var i = 0; i < stationsToTest.length; i++) {
-    stationName = stationsToTest[i];
-    stationAbbr = stationDictionary[stationsToTest[i]];
+  for (var i = 0; i < stations.length; i++) {
+    stationName = stations[i];
+    stationAbbr = stationDictionary[stations[i]];
     //getDepartures(stationAbbr, logAdjacentTrains(stationName));
     getDepartures(stationAbbr, drawAdjacentTrains(stationName));
   }
