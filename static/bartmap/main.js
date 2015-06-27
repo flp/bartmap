@@ -461,7 +461,8 @@ function getLiveTrainSpots(station, estimates) {
    *   estimates - Array of Estimates.
    *
    * Returns:
-   *   ids - Array of CSS ids.
+   *   ids - CSS ids, CSS classes, and image names given as an array of arrays, where each inner
+   *         array is [id, class, image].
    */
   // TODO: currently, two trains can be drawn on the same spot and will overlap one another.
   // there should be some way to tell that two trains are at the same spot, going opposite
@@ -489,23 +490,23 @@ function getLiveTrainSpots(station, estimates) {
     for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
       var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
       var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
-      ids.push(trainSpots['millbrae'][index]);
+      ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
     }
     for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
       var estMinutes = adjacentRedTrains['richmond'][i].minutes;
       var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
-      ids.push(trainSpots['richmond'][index]);
+      ids.push([trainSpots['richmond'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
     }
   } else { // all other stations
     for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
       var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
       var index = avgNorthTime - estMinutes;
-      ids.push(trainSpots['millbrae'][index]);
+      ids.push([trainSpots['millbrae'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
     }
     for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
       var estMinutes = adjacentRedTrains['richmond'][i].minutes;
       var index = avgSouthTime - estMinutes;
-      ids.push(trainSpots['richmond'][index]);
+      ids.push([trainSpots['richmond'][index], 'train-icon-top-right', 'train_icon_south.png']);
     }  
   }
 
@@ -519,16 +520,21 @@ function clearTrains() {
   $('.train-icon').remove();
 }
 
-function drawTrains(ids) {
+function drawTrains(idsAndClassesAndImages) {
   /**
    * Draws trains.
    *
    * Args:
-   *   ids - Array of CSS ids for divs to add train icons to.
+   *   idsAndClassesAndImages - Array of [CSS id to draw train in, CSS class to use for train icon,
+                                          base name of image file].
    */
-  for (var i = 0; i < ids.length; i++) {
-    var trainDiv = $('#' + ids[i]);
-    trainDiv.append('<img class="train-icon" src="/static/bartmap/train_icon.png" />');
+  for (var i = 0; i < idsAndClassesAndImages.length; i++) {
+    var cssId = idsAndClassesAndImages[i][0];
+    var cssClass = idsAndClassesAndImages[i][1];
+    var imageName = idsAndClassesAndImages[i][2];
+    var trainDiv = $('#' + cssId);
+    trainDiv.append('<img class="train-icon {0}" src="/static/bartmap/images/{1}" />'.format(
+      cssClass, imageName));
   }
 }
 
@@ -580,11 +586,11 @@ function run() {
       // TODO: test this
       // get adjacent train estimates
       var estimates = parseBartXML(xmlData);
-      var drawIds = getLiveTrainSpots(station, estimates);
+      var drawIdsAndClasses = getLiveTrainSpots(station, estimates);
       // console.log("CSS ids to draw for {0}: {1}".format(station, drawIds));
 
       // draw on the draw spots
-      drawTrains(drawIds);
+      drawTrains(drawIdsAndClasses);
     }
     return fn
 
