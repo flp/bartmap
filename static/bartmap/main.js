@@ -1,3 +1,6 @@
+// Green and Blue go east-west
+// Red, Orange, and Yellow go north-south
+
 var API_KEY = 'QAVH-UAY7-IQZQ-DT35'
 var BASE_URL = 'http://api.bart.gov/api'
 
@@ -38,6 +41,7 @@ var AdjacentDepartures = function(north, east, south, west) {
 
 // This dictionary maps the html ids of the stations to the station
 // abbrevations laid out by BART.
+// TODO: do we need this anymore? depends if we want to do anything with the station links
 var stationDictionary = {
   "ashby": "ashb",
   "balboa-park": "balb",
@@ -64,59 +68,232 @@ var stationDictionary = {
   "west-oakland": "woak",
 }
 
+var stationNameDictionary = {
+  // maps names from Bart API to a standard format
+  '12th St. Oakland City Center': 'twelfth-st-oakland',
+  '16th St. Mission': 'sixteenth-st-mission',
+  '19th St. Oakland': 'nineteenth-st-oakland',
+  '24th St. Mission': 'twentyfourth-st-mission',
+  'Ashby': 'ashby',
+  'Balboa Park': 'balboa-park',
+  'Bay Fair': 'bay-fair',
+  'Castro Valley': 'castro-valley',
+  'Civic Center/UN Plaza': 'civic-center',
+  'Colma': 'colma',
+  'Coliseum/Oakland Airport': 'coliseum',
+  'Concord': 'concord',
+  'Daly City': 'daly-city',
+  'Downtown Berkeley': 'downtown-berkeley',
+  'Dublin/Pleasanton': 'dublin',
+  'El Cerrito del Norte': 'el-cerrito-del-norte',
+  'El Cerrito Plaza': 'el-cerrito-plaza',
+  'Embarcadero': 'embarcadero',
+  'Fremont': 'fremont',
+  'Fruitvale': 'fruitvale',
+  'Glen Park': 'glen-park',
+  'Hayward': 'hayward',
+  'Lafayette': 'lafayette',
+  'Lake Merritt': 'lake-merrit',
+  'MacArthur': 'macarthur',
+  'Millbrae': 'millbrae',
+  'Montgomery St.': 'montgomery-st',
+  'North Berkeley': 'north-berkeley',
+  'North Concord/Martinez': 'north-concord',
+  'Orinda': 'orinda',
+  'Rockridge': 'rockridge',
+  'Pittsburg/Bay Point': 'pittsburg',
+  'Pleasant Hill': 'pleasant-hill',
+  'Powell St.': 'powell-st',
+  'Richmond': 'richmond',
+  'San Bruno': 'san-bruno',
+  'San Francisco Int\'l Airport': 'sfo',
+  'San Leandro': 'san-leandro',
+  'South Hayward': 'south-hayward',
+  'South San Francisco': 'south-san-francisco',
+  'Union City': 'union-city',
+  'Walnut Creek': 'walnut-creek',
+  'West Dublin': 'west-dublin',
+  'West Oakland': 'west-oakland',
+}
+
+var blueStations = {
+  'dublin': true,
+  'west-dublin': true,
+  'castro-valley': true,
+  'bay-fair': true,
+  'san-leandro': true,
+  'coliseum': true,
+  'fruitvale': true,
+  'lake-merrit': true,
+  'west-oakland': true,
+  'embarcadero': true,
+  'montgomery': true,
+  'powell-st': true,
+  'civic-center': true,
+  'sixteenth-st-mission': true,
+  'twentyfourth-st-mission': true,
+  'glen-park': true,
+  'balboa-park': true,
+  'daly-city': true,
+}
+
+var redStations = {
+  'richmond': true,
+  'el-cerrito-del-norte': true,
+  'el-cerrito-plaza': true,
+  'north-berkeley': true,
+  'downtown-berkeley': true,
+  'ashby': true,
+  'macarthur': true,
+  'nineteenth-st-oakland': true,
+  'twelfth-st-oakland': true,
+  'west-oakland': true,
+  'embarcadero': true,
+  'montgomery': true,
+  'powell-st': true,
+  'civic-center': true,
+  'sixteenth-st-mission': true,
+  'twentyfourth-st-mission': true,
+  'glen-park': true,
+  'balboa-park': true,
+  'daly-city': true,
+  'colma': true,
+  'south-san-francisco': true,
+  'san-bruno': true,
+  'millbrae': true
+}
+
+var yellowStations = {
+  'pittsburg': true,
+  'north-concord': true,
+  'concord': true,
+  'pleasant-hill': true,
+  'walnut-creek': true,
+  'lafayette': true,
+  'orinda': true,
+  'rockridge': true,
+  'macarthur': true,
+  'nineteenth-st-oakland': true,
+  'twelfth-st-oakland': true,
+  'west-oakland': true,
+  'embarcadero': true,
+  'montgomery': true,
+  'powell-st': true,
+  'civic-center': true,
+  'sixteenth-st-mission': true,
+  'twentyfourth-st-mission': true,
+  'glen-park': true,
+  'balboa-park': true,
+  'daly-city': true,
+  'colma': true,
+  'south-san-francisco': true,
+  'san-bruno': true,
+  'sfo': true,
+  'millbrae': true
+}
+
 var adjacentStationsDictionary = {
   // north, east, south, west
-  "richmond":
-    new AdjacentStations(null, null, 'el-cerrito-del-norte', null),
+  "twelfth-st-oakland":
+    new AdjacentStations("nineteenth-st-oakland", null, "west-oakland", null),
+  "sixteenth-st-mission":
+    new AdjacentStations("civic-center", null, "twentyfourth-st-mission", null),
+  "nineteenth-st-oakland":
+    new AdjacentStations("macarthur", null, "twelfth-st-oakland", null),
+  "twentyfourth-st-mission":
+    new AdjacentStations("sixteenth-st-mission", null, "glen-park", null),
+  "ashby":
+    new AdjacentStations("downtown-berkeley", null, "macarthur", null),
+  "b-bayfair":
+    new AdjacentStations(null, "castro-valley", null, "san-leandro"),
+  "balboa-park":
+    new AdjacentStations("glen-park", null, "daly-city", null),
+  "bay-fair":
+    new AdjacentStations("san-leandro", "hayward", "hayward", "san-leandro"),
+  "castro-valley":
+    new AdjacentStations(null, "west-dublin", null, "bay-fair"),
+  "civic-center":
+    new AdjacentStations("powell-st", null, "sixteenth-st-mission", null),
+  "coliseum":
+    new AdjacentStations("fruitvale", "san-leandro", "san-leandro", "fruitvale"),
+  "colma":
+    new AdjacentStations("daly-city", null, "south-san-francisco", null),
+  "concord":
+    new AdjacentStations("north-concord", null, "pleasant-hill", null),
+  "daly-city":
+    new AdjacentStations("balboa-park", null, "colma", null),
+  "dublin":
+    new AdjacentStations(null, null, null, "west-dublin"),
+  "downtown-berkeley":
+    new AdjacentStations("north-berkeley", null, "ashby", null),
   "el-cerrito-del-norte":
     new AdjacentStations("richmond", null, "el-cerrito-plaza", null),
   "el-cerrito-plaza":
     new AdjacentStations("el-cerrito-del-norte", null, "north-berkeley", null),
-  "north-berkeley":
-    new AdjacentStations("el-cerrito-plaza", null, "downtown-berkeley", null),
-  "downtown-berkeley":
-    new AdjacentStations("north-berkeley", null, "ashby", null),
-  "ashby":
-    new AdjacentStations("downtown-berkeley", null, "macarthur", null),
-  "macarthur":
-    new AdjacentStations("ashby", null, "nineteenth-st-oakland", null),
-  "nineteenth-st-oakland":
-    new AdjacentStations("macarthur", null, "twelfth-st-oakland", null),
-  "twelfth-st-oakland":
-    new AdjacentStations("nineteenth-st-oakland", null, "west-oakland", null),
-  "west-oakland":
-    new AdjacentStations("twelfth-st-oakland", null, "embarcadero", null),
   "embarcadero":
     new AdjacentStations("west-oakland", null, "montgomery-st", null),
-  "montgomery-st":
-    new AdjacentStations("embarcadero", null, "powell-st", null),
-  "powell-st":
-    new AdjacentStations("montgomery-st", null, "civic-center", null),
-  "civic-center":
-    new AdjacentStations("powell-st", null, "sixteenth-st-mission", null),
-  "sixteenth-st-mission":
-    new AdjacentStations("civic-center", null, "twentyfourth-st-mission", null),
-  "twentyfourth-st-mission":
-    new AdjacentStations("sixteenth-st-mission", null, "glen-park", null),
   "glen-park":
     new AdjacentStations("twentyfourth-st-mission", null, "balboa-park", null),
-  "balboa-park":
-    new AdjacentStations("glen-park", null, "daly-city", null),
-  "daly-city":
-    new AdjacentStations("balboa-park", null, "colma", null),
-  "colma":
-    new AdjacentStations("daly-city", null, "south-san-francisco", null),
+  "fremont":
+    new AdjacentStations("union-city", null, null, "union-city"),
+  "fruitvale":
+    new AdjacentStations("lake-merrit", "coliseum", "coliseum", "lake-merrit"),
+  "hayward":
+    new AdjacentStations("bay-fair", "south-hayward", "south-hayward", "bay-fair"),
+  "lafayette":
+    new AdjacentStations("walnut-creek", null, "orinda", null),
+  "lake-merrit":
+    new AdjacentStations("twelfth-st-oakland", "fruitvale", "fruitvale", "west-oakland"),
+  "macarthur":
+    new AdjacentStations("ashby", null, "nineteenth-st-oakland", null),
+  "millbrae":
+    new AdjacentStations("san-bruno", null, null, "sfo"),
+  "montgomery-st":
+    new AdjacentStations("embarcadero", null, "powell-st", null),
+  "north-berkeley":
+    new AdjacentStations("el-cerrito-plaza", null, "downtown-berkeley", null),
+  "north-concord":
+    new AdjacentStations("pittsburg", null, "concord", null),
+  "orinda":
+    new AdjacentStations("lafayette", null, "rockridge", null),
+  "pittsburg":
+    new AdjacentStations(null, null, "north-concord", null),
+  "pleasant-hill":
+    new AdjacentStations("concord", null, "walnut-creek", null),
+  "powell-st":
+    new AdjacentStations("montgomery-st", null, "civic-center", null),
+  "richmond":
+    new AdjacentStations(null, null, 'el-cerrito-del-norte', null),
+  "rockridge":
+    new AdjacentStations("orinda", null, "macarthur", null),
+  "san-bruno":
+    new AdjacentStations("south-san-francisco", "sfo", "millbrae", null),
+  "san-leandro":
+    new AdjacentStations("coliseum", "bay-fair", "bay-fair", "coliseum"),
+  "sfo":
+    new AdjacentStations("san-bruno", null, "millbrae", null),
+  "south-hayward":
+    new AdjacentStations("hayward", "union-city", "union-city", "hayward"),
   "south-san-francisco":
     new AdjacentStations("colma", null, "san-bruno", null),
-  "san-bruno":
-    new AdjacentStations("south-san-francisco", null, "millbrae", null),
-  "millbrae":
-    new AdjacentStations("san-bruno", null, null, null),
+  "union-city":
+    new AdjacentStations("south-hayward", "union-city", "union-city", "south-hayward"),
+  "walnut-creek":
+    new AdjacentStations("pleasant-hill", null, "lafayette", null),
+  "west-dublin":
+    new AdjacentStations(null, "dublin", null, "castro-valley"),
+  "west-oakland":
+    new AdjacentStations("twelfth-st-oakland", null, "embarcadero", null),
+  "y-macarthur":
+    new AdjacentStations("rockridge", null, "nineteenth-st-oakland", null),
+  "y-millbrae":
+    new AdjacentStations("sfo", null, null, null),
+  "y-san-bruno":
+    new AdjacentStations("south-san-francisco", null, "sfo", null),
 }
 
 // This dictionary maps adjacent stations to the average time, in minutes,
 // it takes a train to go from one station to the other.
-// Currently, only stations on the Richmond line are present.
 var stationEstimatesDictionary = {
   "richmond_el-cerrito-del-norte": 4,
   "el-cerrito-del-norte_richmond": 4,
@@ -183,6 +360,36 @@ var stationEstimatesDictionary = {
 
   "san-bruno_millbrae": 6,
   "millbrae_san-bruno": 6,
+
+  "pittsburg_north-concord": 6,
+  "north-concord_pittsburg": 6,
+
+  "north-concord_concord": 3,
+  "concord_north-concord": 3,
+
+  "concord_pleasant-hill": 5,
+  "pleasant-hill_concord": 5,
+
+  "pleasant-hill_walnut-creek": 2,
+  "walnut-creek_pleasant-hill": 2,
+
+  "walnut-creek_lafayette": 5,
+  "lafayette_walnut-creek": 5,
+
+  "lafayette_orinda": 5,
+  "orinda_lafayette": 5,
+
+  "orinda_rockridge": 5,
+  "rockridge_orinda": 5,
+
+  "rockridge_macarthur": 2,
+  "macarthur_rockridge": 2,
+
+  "san-bruno_sfo": 5,
+  "sfo_san-bruno": 5,
+
+  "sfo_millbrae": 4,
+  "millbrae_sfo": 4,
 }
 
 String.prototype.format = function() {
@@ -301,6 +508,63 @@ function getAdjacentRedTrains(stationName, estimates) {
   return adjacentEstimates;
 }
 
+function getAdjacentYellowTrains(station, estimates) {
+  /**
+   * Finds estimates of adjacent trains for a station from an array of estimates.
+   * 
+   * Args:
+   *   station - name of station, e.g. 'concord'.
+   *   estimates - Array of Estimates.
+   *
+   * Returns:
+   *   Dictionary mapping destinations to arrays of adjacent estimates.
+   */
+  var adjacentStationsLookupKey = station;
+  // Special case for stations adjacent to SFO.
+  if (station == 'millbrae' || station == 'san-bruno') {
+    adjacentStationsLookupKey = 'y-' + station;
+  }
+
+  // Get adjacent stations.
+  var adjacentStations = adjacentStationsDictionary[adjacentStationsLookupKey];
+  if (adjacentStations == null) {
+    console.log(station);
+  }
+  var adjacentSouthboundStation = adjacentStations.south;
+  var adjacentNorthboundStation = adjacentStations.north;
+
+  // Get time distances to adjacent stations.
+  var adjacentSouthboundTimeDistance = null;
+  var adjacentNorthboundTimeDistance = null;
+  if (adjacentSouthboundStation != null) {
+    var key = station + "_" + adjacentSouthboundStation;
+    adjacentSouthboundTimeDistance = stationEstimatesDictionary[key];
+  }
+  if (adjacentNorthboundStation != null) {
+    var key = station + "_" + adjacentNorthboundStation;
+    adjacentNorthboundTimeDistance = stationEstimatesDictionary[key];
+  }
+
+  // Find nearby trains.
+  var adjacentEstimates = {
+    "millbrae": [],
+    "pittsburg": []
+  }
+  for (var i = 0; i < estimates.length; i++) {
+    if (estimates[i].color == "YELLOW" &&
+        estimates[i].destination == "millbrae" &&
+        parseInt(estimates[i].minutes) <= adjacentSouthboundTimeDistance) {
+      adjacentEstimates["millbrae"].push(estimates[i]);
+    } else if (
+        estimates[i].color == "YELLOW" &&
+        estimates[i].destination == "pittsburg" &&
+        parseInt(estimates[i].minutes) <= adjacentNorthboundTimeDistance) {
+      adjacentEstimates["pittsburg"].push(estimates[i]);
+    }
+  }
+  return adjacentEstimates;
+}
+
 function getAdjacentRedTrainsTEST(stationName) {
   stationAbbr = stationDictionary[stationName];
   bartData = getDeparturesSynchronous(stationAbbr);
@@ -318,7 +582,7 @@ function getAdjacentRedTrainsTEST(stationName) {
  * Data is in the form of dictionaries mapping destinations to arrays of ids. Arrays are ordered by
  * distance to station in descending order.
  */
-var trainSpotsDictionary = {
+var redTrainSpotsDictionary = {
   'richmond': // end-of-line station
     {
       'millbrae': ['deln-plza-0', 'rich-deln-3', 'rich-deln-2', 'rich-deln-1'],
@@ -438,41 +702,161 @@ var trainSpotsDictionary = {
     }
 }
 
-function getTrainSpots(station) {
-  /**
-   * Gets CSS ids of DOM elements where trains could be drawn for given station.
-   *
-   * Args:
-   *   station - station name, e.g. 'richmond'
-   *
-   * Returns:
-   *   Dictionary mapping destinations to arrays of ids. Arrays are ordered by distance to
-   *   station in descending order.
-   */ 
-   return trainSpotsDictionary[station];
+/**
+ * Dictionary mapping yellow stations to train spots data.
+ *
+ * Data is in the form of dictionaries mapping destinations to arrays of ids. Arrays are ordered by
+ * distance to station in descending order.
+ */
+var yellowTrainSpotsDictionary = {
+  'pittsburg': {
+    'millbrae': ['y-train-marker-6', 'y-train-marker-5', 'y-train-marker-4', 'y-train-marker-3',
+                 'y-train-marker-2', 'y-train-marker-1'],
+    'pittsburg': []
+  },
+  'north-concord': {
+    'millbrae': ['y-train-marker-0', 'y-train-marker-1', 'y-train-marker-2', 'y-train-marker-3',
+                 'y-train-marker-4', 'y-train-marker-5'],
+    'pittsburg': ['y-train-marker-9', 'y-train-marker-8', 'y-train-marker-7']
+  },
+  'concord': {
+    'millbrae': ['y-train-marker-6', 'y-train-marker-7', 'y-train-marker-8'],
+    'pittsburg': ['y-train-marker-14', 'y-train-marker-13', 'y-train-marker-12',
+                  'y-train-marker-11', 'y-train-marker-10']
+  },
+  'pleasant-hill': {
+    'millbrae': ['y-train-marker-9', 'y-train-marker-10', 'y-train-marker-11', 'y-train-marker-12',
+                 'y-train-marker-13'],
+    'pittsburg': ['y-train-marker-16', 'y-train-marker-15']
+  },
+  'walnut-creek': {
+    'millbrae': ['y-train-marker-14', 'y-train-marker-15'],
+    'pittsburg': ['y-train-marker-21', 'y-train-marker-20', 'y-train-marker-19',
+                  'y-train-marker-18', 'y-train-marker-17']
+  },
+  'lafayette': {
+    'millbrae': ['y-train-marker-16', 'y-train-marker-17', 'y-train-marker-18',
+                 'y-train-marker-19', 'y-train-marker-20'],
+    'pittsburg': ['y-train-marker-26', 'y-train-marker-25', 'y-train-marker-24',
+                  'y-train-marker-23', 'y-train-marker-22']
+  },
+  'orinda': {
+    'millbrae': ['y-train-marker-21', 'y-train-marker-22', 'y-train-marker-23',
+                 'y-train-marker-24', 'y-train-marker-25'],
+    'pittsburg': ['y-train-marker-31', 'y-train-marker-30', 'y-train-marker-29',
+                  'y-train-marker-28', 'y-train-marker-27']
+  },
+  'rockridge': {
+    'millbrae': ['y-train-marker-26', 'y-train-marker-27', 'y-train-marker-28',
+                 'y-train-marker-29', 'y-train-marker-30'],
+    'pittsburg': ['y-train-marker-33', 'y-train-marker-32']
+  },
+  'macarthur': {
+    'millbrae': ['y-train-marker-31', 'y-train-marker-32'],
+    'pittsburg': ['y-train-marker-37', 'y-train-marker-36', 'y-train-marker-35',
+                  'y-train-marker-34']
+  },
+  'nineteenth-st-oakland': {
+    'millbrae': ['y-train-marker-33', 'y-train-marker-34', 'y-train-marker-35',
+                 'y-train-marker-36'],
+    'pittsburg': ['y-train-marker-39', 'y-train-marker-38']
+  },
+  'twelfth-st-oakland': {
+    'millbrae': ['y-train-marker-37', 'y-train-marker-38'],
+    'pittsburg': ['y-train-marker-44', 'y-train-marker-43', 'y-train-marker-42',
+                  'y-train-marker-41', 'y-train-marker-40']
+  },
+  'west-oakland': {
+    'millbrae': ['y-train-marker-39', 'y-train-marker-40', 'y-train-marker-41',
+                 'y-train-marker-42', 'y-train-marker-43'],
+    'pittsburg': ['y-train-marker-52', 'y-train-marker-51', 'y-train-marker-50',
+                  'y-train-marker-49', 'y-train-marker-48', 'y-train-marker-47',
+                  'y-train-marker-46', 'y-train-marker-45']
+  },
+  'embarcadero': {
+    'millbrae': ['y-train-marker-44', 'y-train-marker-45', 'y-train-marker-46',
+                 'y-train-marker-47', 'y-train-marker-48', 'y-train-marker-49',
+                 'y-train-marker-50', 'y-train-marker-51'],
+    'pittsburg': ['y-train-marker-54', 'y-train-marker-53']
+  },
+  'montgomery-st': {
+    'millbrae': ['y-train-marker-52', 'y-train-marker-53'],
+    'pittsburg': ['y-train-marker-56', 'y-train-marker-55']
+  },
+  'powell-st': {
+    'millbrae': ['y-train-marker-54', 'y-train-marker-55'],
+    'pittsburg': ['y-train-marker-58', 'y-train-marker-57']
+  },
+  'civic-center': {
+    'millbrae': ['y-train-marker-56', 'y-train-marker-57'],
+    'pittsburg': ['y-train-marker-60', 'y-train-marker-59']
+  },
+  'sixteenth-st-mission': {
+    'millbrae': ['y-train-marker-58', 'y-train-marker-59'],
+    'pittsburg': ['y-train-marker-62', 'y-train-marker-61']
+  },
+  'twentyfourth-st-mission': {
+    'millbrae': ['y-train-marker-60', 'y-train-marker-61'],
+    'pittsburg': ['y-train-marker-65', 'y-train-marker-64', 'y-train-marker-63']
+  },
+  'glen-park': {
+    'millbrae': ['y-train-marker-62', 'y-train-marker-63', 'y-train-marker-64'],
+    'pittsburg': ['y-train-marker-67', 'y-train-marker-66']
+  },
+  'balboa-park': {
+    'millbrae': ['y-train-marker-65', 'y-train-marker-66'],
+    'pittsburg': ['y-train-marker-71', 'y-train-marker-70', 'y-train-marker-69',
+                  'y-train-marker-68']
+  },
+  'daly-city': {
+    'millbrae': ['y-train-marker-67', 'y-train-marker-68', 'y-train-marker-69',
+                 'y-train-marker-70'],
+    'pittsburg': ['y-train-marker-75', 'y-train-marker-74', 'y-train-marker-73',
+                  'y-train-marker-72']
+  },
+  'colma': {
+    'millbrae': ['y-train-marker-71', 'y-train-marker-72', 'y-train-marker-73',
+                 'y-train-marker-74'],
+    'pittsburg': ['y-train-marker-78', 'y-train-marker-77',' y-train-marker-76']
+  },
+  'south-san-francisco': {
+    'millbrae': ['y-train-marker-75', 'y-train-marker-76', 'y-train-marker-77'],
+    'pittsburg': ['y-train-marker-82', 'y-train-marker-81', 'y-train-marker-80',
+                  'y-train-marker-79']
+  },
+  'san-bruno': {
+    'millbrae': ['y-train-marker-78', 'y-train-marker-79', 'y-train-marker-80',
+                 'y-train-marker-81'],
+    'pittsburg': ['y-train-marker-87', 'y-train-marker-86', 'y-train-marker-85',
+                  'y-train-marker-84', 'y-train-marker-83']
+  },
+  'sfo': {
+    'millbrae': ['y-train-marker-82', 'y-train-marker-83', 'y-train-marker-84',
+                 'y-train-marker-85', 'y-train-marker-86'],
+    'pittsburg': ['y-train-marker-91', 'y-train-marker-90', 'y-train-marker-89',
+                  'y-train-marker-88']
+  },
+  'millbrae': {
+    'millbrae': [],
+    'pittsburg': ['y-train-marker-87', 'y-train-marker-88', 'y-train-marker-89',
+                 'y-train-marker-90'],
+  },
 }
 
-function getLiveTrainSpots(station, estimates) {
+function getLiveTrainSpotsRed(station, adjacentTrains) {
   /**
    * Gets CSS ids of DOM elements where trains should be drawn given current estimates.
    *
    * Args:
    *   station - station name, e.g. 'richmond'
-   *   estimates - Array of Estimates.
+   *   estimates - Dictionary of destinations -> arrays of Estimates.
    *
    * Returns:
    *   ids - CSS ids, CSS classes, and image names given as an array of arrays, where each inner
    *         array is [id, class, image].
    */
-  // TODO: currently, two trains can be drawn on the same spot and will overlap one another.
-  // there should be some way to tell that two trains are at the same spot, going opposite
-  // directions.
-  // console.log("Number of estimates for {0}: {1}".format(station, estimates.length));
-  var ids = [];
-  var adjacentRedTrains = getAdjacentRedTrains(station, estimates);
-  // console.log("Number of adjacent estimates for {0}: {1}".format(
-    // station, adjacentRedTrains['millbrae'].length + adjacentRedTrains['richmond'].length));
-  var trainSpots = getTrainSpots(station);
+  var ids = [];  
+  var trainSpots = redTrainSpotsDictionary[station];
   var adjacentStations = adjacentStationsDictionary[station];
 
   // Get average time to closest northern and southern stations.
@@ -487,26 +871,86 @@ function getLiveTrainSpots(station, estimates) {
   // Need to check for end-of-line stations. E.g. trains going into Richmond are bound for
   // Millbrae but they are going north.
   if (station == 'richmond' || station == 'millbrae') { // end-of-line stations
-    for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
-      var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
+    for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
+      var estMinutes = adjacentTrains['millbrae'][i].minutes;
       var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
-      ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
-    }
-    for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
-      var estMinutes = adjacentRedTrains['richmond'][i].minutes;
-      var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
-      ids.push([trainSpots['richmond'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
-    }
-  } else { // all other stations
-    for (var i = 0; i < adjacentRedTrains['millbrae'].length; i++) {
-      var estMinutes = adjacentRedTrains['millbrae'][i].minutes;
-      var index = avgNorthTime - estMinutes;
       ids.push([trainSpots['millbrae'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
     }
-    for (var i = 0; i < adjacentRedTrains['richmond'].length; i++) {
-      var estMinutes = adjacentRedTrains['richmond'][i].minutes;
-      var index = avgSouthTime - estMinutes;
+    for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
+      var estMinutes = adjacentTrains['richmond'][i].minutes;
+      var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['richmond'][index], 'train-icon-top-right', 'train_icon_south.png']);
+    }
+  } else { // all other stations
+    for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
+      var estMinutes = adjacentTrains['millbrae'][i].minutes;
+      var index = avgNorthTime - estMinutes;
+      ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
+    }
+    for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
+      var estMinutes = adjacentTrains['richmond'][i].minutes;
+      var index = avgSouthTime - estMinutes;
+      ids.push([trainSpots['richmond'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+    }  
+  }
+
+  return ids;
+}
+
+function getLiveTrainSpotsYellow(station, adjacentTrains) {
+  /**
+   * Gets CSS ids of DOM elements where yellow trains should be drawn given current estimates.
+   *
+   * Args:
+   *   station - station name, e.g. 'richmond'
+   *   estimates - Dictionary of destinations -> arrays of Estimates.
+   *
+   * Returns:
+   *   ids - CSS ids, CSS classes, and image names given as an array of arrays, where each inner
+   *         array is [id, class, image].
+   */
+  var ids = [];
+  var trainSpots = yellowTrainSpotsDictionary[station];
+
+  var adjacentStationsLookupKey = station;
+  // Special case for stations adjacent to SFO.
+  if (station == 'millbrae' || station == 'san-bruno') {
+    adjacentStationsLookupKey = 'y-' + station;
+  }
+  var adjacentStations = adjacentStationsDictionary[adjacentStationsLookupKey];
+
+  // Get average time to closest northern and southern stations.
+  var northernStation = adjacentStations.north;
+  var key = station + "_" + northernStation;
+  var avgNorthTime = stationEstimatesDictionary[key];
+  var southernStation = adjacentStations.south;
+  key = station + "_" + southernStation;
+  var avgSouthTime = stationEstimatesDictionary[key];
+
+  // Use the adjacent estimates and train spots to figure out where to draw trains.
+  // Need to check for end-of-line stations. E.g. trains going into Pittsburg are bound for
+  // Millbrae but they are going north.
+  if (station == 'pittsburg' || station == 'millbrae') { // end-of-line stations
+    for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
+      var estMinutes = adjacentTrains['millbrae'][i].minutes;
+      var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
+      ids.push([trainSpots['millbrae'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+    }
+    for (var i = 0; i < adjacentTrains['pittsburg'].length; i++) { // trains going to pittsburg
+      var estMinutes = adjacentTrains['pittsburg'][i].minutes;
+      var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
+      ids.push([trainSpots['pittsburg'][index], 'train-icon-top-right', 'train_icon_south.png']);
+    }
+  } else { // all other stations
+    for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
+      var estMinutes = adjacentTrains['millbrae'][i].minutes;
+      var index = avgNorthTime - estMinutes;
+      ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
+    }
+    for (var i = 0; i < adjacentTrains['pittsburg'].length; i++) { // trains going to pittsburg
+      var estMinutes = adjacentTrains['pittsburg'][i].minutes;
+      var index = avgSouthTime - estMinutes;
+      ids.push([trainSpots['pittsburg'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
     }  
   }
 
@@ -541,79 +985,89 @@ function drawTrains(idsAndClassesAndImages) {
 // END DRAWING CODE
 /* ************************************************************************* */
 
-function run() {
+function getEstimatesFromXml(stationXml) {
   /**
-   * Main event loop.
+   * Get array of estimates from XML for one station.
+   *
+   * Args:
+   *   stationXml - XML data for a single station.
+   *
+   * Returns:
+   *   An array of estimates.
    */
-  stations = Object.keys(stationDictionary);
+  var $stationXml = $(stationXml);
+  var $etdXml = $stationXml.children("etd");
 
-  function logAdjacentTrains(stationName) {
-
-    function doWork(xmlData) {
-      estimates = parseBartXML(xmlData);
-      if (estimates.length > 1) {
-        adjacents = getAdjacentRedTrains(stationName, estimates);
-        console.log("Adjacent trains for {0}:".format(stationName));
-        millbraeAdjacents = adjacents["millbrae"];
-        richmondAdjacents = adjacents["richmond"];
-        for (var i = 0; i < millbraeAdjacents.length; i++) {
-          console.log("Destination: {0}. Time to departure from {1}: {2}".format(
-                      millbraeAdjacents[i].destination, stationName, 
-                      millbraeAdjacents[i].minutes));
-        }
-        for (var i = 0; i < richmondAdjacents.length; i++) {
-          console.log("Destination: {0}. Time to departure from {1}: {2}".format(
-                      richmondAdjacents[i].destination, stationName, 
-                      richmondAdjacents[i].minutes));
-        }
-        console.log("End output for {0}.".format(stationName));
-        console.log("-------------------------------------------------------");
-      }
+  var estimates = [];
+  $etdXml.each(function() {
+    var $destination = stationNameDictionary[$(this).find("destination").text()];
+    if ($destination == null) {
+      $destination = "millbrae";
     }
+    var $destAbbr = $(this).find("abbr").text();
+    $(this).children("estimate").each(function() {
+      var estimate = new Estimate(
+        stationNameDictionary[$stationXml.find("name").text()], // stationName
+        $stationXml.find("abbr").text(), // stationAbbr
+        $destination, // destination
+        $destAbbr, // destAbbr
+        $(this).find("minutes").text(), // minutes
+        $(this).find("platform").text(), // platform
+        $(this).find("direction").text(), // direction
+        $(this).find("length").text(), // length
+        $(this).find("color").text(), // color
+        $(this).find("hexcolor").text(), // hexColor
+        $(this).find("bikeflag").text() // bikeFlag
+      );
+      estimates.push(estimate);
+    });
+  });
 
-    return doWork;
+  return estimates;
+}
+
+function processRealtimeEstimates(station, estimates) {
+  /**
+   *
+   */
+  // filter for estimates that are adjacent
+  // var adjacentEstimatesDict = getAdjacentTrains(station, estimates);
+
+  if (station in redStations) {
+    var adjacentEstimates = getAdjacentRedTrains(station, estimates);
+    var drawSpots = getLiveTrainSpotsRed(station, adjacentEstimates);
+    drawTrains(drawSpots);
   }
 
-  // console.log("BEGIN NEW DATA");
-  // for (var i = 0; i < stations.length; i++) {
-  //   stationName = stations[i];
-  //   stationAbbr = stationDictionary[stations[i]];
-  // }
-
-  function drawAdjacentTrains(station) {
-
-    var fn = function(xmlData) {
-      // TODO: test this
-      // get adjacent train estimates
-      var estimates = parseBartXML(xmlData);
-      var drawIdsAndClasses = getLiveTrainSpots(station, estimates);
-      // console.log("CSS ids to draw for {0}: {1}".format(station, drawIds));
-
-      // draw on the draw spots
-      drawTrains(drawIdsAndClasses);
-    }
-    return fn
-
+  if (station in yellowStations) {
+    var adjacentEstimates = getAdjacentYellowTrains(station, estimates);
+    var drawSpots = getLiveTrainSpotsYellow(station, adjacentEstimates);
+    drawTrains(drawSpots);
   }
-  
-  // TODO: gather all train data in a single request
-  clearTrains();
-  for (var i = 0; i < stations.length; i++) {
-    stationName = stations[i];
-    stationAbbr = stationDictionary[stations[i]];
-    //getDepartures(stationAbbr, logAdjacentTrains(stationName));
-    getDepartures(stationAbbr, drawAdjacentTrains(stationName));
-  }
+}
 
+function run(xmlData) {
+  var $xml = $(xmlData);
+  var $rootXml = $xml.find('root');
+  var $stationXml = $rootXml.find('station');
+  clearTrains(); // TODO: do this at the station level
+
+  $stationXml.each(function() {
+    var $stationNameBart = $(this).find('name').text();
+    var $stationName = stationNameDictionary[$stationNameBart];
+    var estimates = getEstimatesFromXml($(this));
+    processRealtimeEstimates($stationName, estimates);
+  });
 }
 
 $(document).ready(function() {
-  $(".station").each(function() {
-    $(this).click(function() {
-      getDepartures(stationDictionary[$(this).attr("id")], showStationInfo);
-    });
-  });
-  interval = 5*1000; // 5 seconds
-  setInterval(run, interval);
-});
+  // $(".station").each(function() {
+  //   $(this).click(function() {
+  //     getDepartures(stationDictionary[$(this).attr("id")], showStationInfo);
+  //   });
+  // });
 
+  // interval = 5*1000; // 5 seconds
+  // setInterval(getDepartures, interval, 'all', run);
+  // getDepartures('all', run);
+});

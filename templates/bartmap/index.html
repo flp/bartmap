@@ -5,7 +5,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'bartmap/main.js' %}"></script>
 </head>
-
 <body>
   <div id="parent-box">
     <div id="first-box">
@@ -14,7 +13,210 @@
   </div>
   </div>
   <div id="bartmap">
-    <img class="train-icon" src="{% static 'bartmap/images/train_icon.png' %}" />
+    <!-- begin blue line -->
+    <div class="train-marker" id="b-train-marker-0"></div> <!-- dublin -->
+    <div class="train-marker" id="b-train-marker-1"></div>
+    <div class="train-marker" id="b-train-marker-2"></div> <!-- west-dublin -->
+    <div class="train-marker" id="b-train-marker-3"></div>
+    <div class="train-marker" id="b-train-marker-4"></div>
+    <div class="train-marker" id="b-train-marker-5"></div>
+    <div class="train-marker" id="b-train-marker-6"></div>
+    <div class="train-marker" id="b-train-marker-7"></div>
+    <div class="train-marker" id="b-train-marker-8"></div>
+    <div class="train-marker" id="b-train-marker-9"></div>
+    <div class="train-marker" id="b-train-marker-10"></div>
+    <div class="train-marker" id="b-train-marker-11"></div>
+    <div class="train-marker" id="b-train-marker-12"></div>
+    <div class="train-marker" id="b-train-marker-13"></div> <!-- castro-valley -->
+    <div class="train-marker" id="b-train-marker-14"></div>
+    <div class="train-marker" id="b-train-marker-15"></div>
+    <div class="train-marker" id="b-train-marker-16"></div>
+    <div class="train-marker" id="b-train-marker-17"></div> <!-- bay-fair -->
+    <div class="train-marker" id="b-train-marker-18"></div>
+    <div class="train-marker" id="b-train-marker-19"></div>
+    <div class="train-marker" id="b-train-marker-20"></div>
+    <div class="train-marker" id="b-train-marker-21"></div> <!-- san-leandro -->
+    <div class="train-marker" id="b-train-marker-22"></div>
+    <div class="train-marker" id="b-train-marker-23"></div>
+    <div class="train-marker" id="b-train-marker-24"></div>
+    <div class="train-marker" id="b-train-marker-25"></div> <!-- coliseum -->
+    <div class="train-marker" id="b-train-marker-26"></div>
+    <div class="train-marker" id="b-train-marker-27"></div>
+    <div class="train-marker" id="b-train-marker-28"></div>
+    <div class="train-marker" id="b-train-marker-29"></div> <!-- fruitvale -->
+    <div class="train-marker" id="b-train-marker-30"></div>
+    <div class="train-marker" id="b-train-marker-31"></div>
+    <div class="train-marker" id="b-train-marker-32"></div>
+    <div class="train-marker" id="b-train-marker-33"></div> <!-- lake-merrit -->
+    <div class="train-marker" id="b-train-marker-34"></div>
+    <div class="train-marker" id="b-train-marker-35"></div>
+    <div class="train-marker" id="b-train-marker-36"></div>
+    <div class="train-marker" id="b-train-marker-37"></div>
+    <div class="train-marker" id="b-train-marker-38"></div>
+    <div class="train-marker" id="b-train-marker-39"></div> <!-- west-oakland -->
+    <div class="train-marker" id="b-train-marker-40"></div>
+    <div class="train-marker" id="b-train-marker-41"></div>
+    <div class="train-marker" id="b-train-marker-42"></div>
+    <div class="train-marker" id="b-train-marker-43"></div>
+    <div class="train-marker" id="b-train-marker-44"></div>
+    <div class="train-marker" id="b-train-marker-45"></div>
+    <div class="train-marker" id="b-train-marker-46"></div>
+    <div class="train-marker" id="b-train-marker-47"></div> <!-- embarcadero -->
+    <div class="train-marker" id="b-train-marker-48"></div>
+    <div class="train-marker" id="b-train-marker-49"></div> <!-- montgomery-st -->
+    <div class="train-marker" id="b-train-marker-50"></div>
+    <div class="train-marker" id="b-train-marker-51"></div> <!-- powell-st -->
+    <div class="train-marker" id="b-train-marker-52"></div>
+    <div class="train-marker" id="b-train-marker-53"></div> <!-- civic-center -->
+    <div class="train-marker" id="b-train-marker-54"></div>
+    <div class="train-marker" id="b-train-marker-55"></div> <!-- sixteenth-st-mission -->
+    <div class="train-marker" id="b-train-marker-56"></div>
+    <div class="train-marker" id="b-train-marker-57"></div> <!-- twenty-fourth-st-mission -->
+    <div class="train-marker" id="b-train-marker-58"></div>
+    <div class="train-marker" id="b-train-marker-59"></div>
+    <div class="train-marker" id="b-train-marker-60"></div> <!-- glen-park -->
+    <div class="train-marker" id="b-train-marker-61"></div>
+    <div class="train-marker" id="b-train-marker-62"></div> <!-- balboa-park -->
+    <div class="train-marker" id="b-train-marker-63"></div>
+    <div class="train-marker" id="b-train-marker-64"></div>
+    <div class="train-marker" id="b-train-marker-65"></div>
+    <div class="train-marker" id="b-train-marker-66"></div> <!-- daly-city -->
+    <!-- end blue line -->
+    <!-- begin green line -->
+    <div class="train-marker" id="g-train-marker-0"></div> <!-- fremont -->
+    <div class="train-marker" id="g-train-marker-1"></div>
+    <div class="train-marker" id="g-train-marker-2"></div>
+    <div class="train-marker" id="g-train-marker-3"></div>
+    <div class="train-marker" id="g-train-marker-4"></div>
+    <div class="train-marker" id="g-train-marker-5"></div> <!-- union-city -->
+    <div class="train-marker" id="g-train-marker-6"></div>
+    <div class="train-marker" id="g-train-marker-7"></div>
+    <div class="train-marker" id="g-train-marker-8"></div>
+    <div class="train-marker" id="g-train-marker-9"></div>
+    <div class="train-marker" id="g-train-marker-10"></div> <!-- south-hayward -->
+    <div class="train-marker" id="g-train-marker-11"></div>
+    <div class="train-marker" id="g-train-marker-12"></div>
+    <div class="train-marker" id="g-train-marker-13"></div>
+    <div class="train-marker" id="g-train-marker-14"></div> <!-- hayward -->
+    <div class="train-marker" id="g-train-marker-15"></div>
+    <div class="train-marker" id="g-train-marker-16"></div>
+    <div class="train-marker" id="g-train-marker-17"></div>
+    <div class="train-marker" id="g-train-marker-18"></div> <!-- bay-fair -->
+    <div class="train-marker" id="g-train-marker-19"></div>
+    <div class="train-marker" id="g-train-marker-20"></div>
+    <div class="train-marker" id="g-train-marker-21"></div>
+    <div class="train-marker" id="g-train-marker-22"></div> <!-- san-leandro -->
+    <div class="train-marker" id="g-train-marker-23"></div>
+    <div class="train-marker" id="g-train-marker-24"></div>
+    <div class="train-marker" id="g-train-marker-25"></div>
+    <div class="train-marker" id="g-train-marker-26"></div> <!-- coliseum -->
+    <div class="train-marker" id="g-train-marker-27"></div>
+    <div class="train-marker" id="g-train-marker-28"></div>
+    <div class="train-marker" id="g-train-marker-29"></div>
+    <div class="train-marker" id="g-train-marker-30"></div> <!-- fruitvale -->
+    <div class="train-marker" id="g-train-marker-31"></div>
+    <div class="train-marker" id="g-train-marker-32"></div>
+    <div class="train-marker" id="g-train-marker-33"></div>
+    <div class="train-marker" id="g-train-marker-34"></div> <!-- lake-merrit -->
+    <div class="train-marker" id="g-train-marker-35"></div>
+    <div class="train-marker" id="g-train-marker-36"></div>
+    <div class="train-marker" id="g-train-marker-37"></div>
+    <div class="train-marker" id="g-train-marker-38"></div>
+    <div class="train-marker" id="g-train-marker-39"></div>
+    <div class="train-marker" id="g-train-marker-40"></div> <!-- west-oakland -->
+    <div class="train-marker" id="g-train-marker-41"></div>
+    <div class="train-marker" id="g-train-marker-42"></div>
+    <div class="train-marker" id="g-train-marker-43"></div>
+    <div class="train-marker" id="g-train-marker-44"></div>
+    <div class="train-marker" id="g-train-marker-45"></div>
+    <div class="train-marker" id="g-train-marker-46"></div>
+    <div class="train-marker" id="g-train-marker-47"></div>
+    <div class="train-marker" id="g-train-marker-48"></div> <!-- embarcadero -->
+    <div class="train-marker" id="g-train-marker-49"></div>
+    <div class="train-marker" id="g-train-marker-50"></div> <!-- montgomery-st -->
+    <div class="train-marker" id="g-train-marker-51"></div>
+    <div class="train-marker" id="g-train-marker-52"></div> <!-- powell-st -->
+    <div class="train-marker" id="g-train-marker-53"></div>
+    <div class="train-marker" id="g-train-marker-54"></div> <!-- civic-center -->
+    <div class="train-marker" id="g-train-marker-55"></div>
+    <div class="train-marker" id="g-train-marker-56"></div> <!-- sixteenth-st-mission -->
+    <div class="train-marker" id="g-train-marker-57"></div>
+    <div class="train-marker" id="g-train-marker-58"></div> <!-- twenty-fourth-st-mission -->
+    <div class="train-marker" id="g-train-marker-59"></div>
+    <div class="train-marker" id="g-train-marker-60"></div>
+    <div class="train-marker" id="g-train-marker-61"></div> <!-- glen-park -->
+    <div class="train-marker" id="g-train-marker-62"></div>
+    <div class="train-marker" id="g-train-marker-63"></div> <!-- balboa-park -->
+    <div class="train-marker" id="g-train-marker-64"></div>
+    <div class="train-marker" id="g-train-marker-65"></div>
+    <div class="train-marker" id="g-train-marker-66"></div>
+    <div class="train-marker" id="g-train-marker-67"></div> <!-- daly-city -->
+    <!-- end green line -->
+    <!-- begin orange line -->
+    <div class="train-marker" id="o-train-marker-0"></div> <!-- richmond -->
+    <div class="train-marker" id="o-train-marker-1"></div>
+    <div class="train-marker" id="o-train-marker-2"></div>
+    <div class="train-marker" id="o-train-marker-3"></div>
+    <div class="train-marker" id="o-train-marker-4"></div> <!-- el-cerrito-del-norte -->
+    <div class="train-marker" id="o-train-marker-5"></div>
+    <div class="train-marker" id="o-train-marker-6"></div>
+    <div class="train-marker" id="o-train-marker-7"></div> <!-- el-cerrito-plaza -->
+    <div class="train-marker" id="o-train-marker-8"></div>
+    <div class="train-marker" id="o-train-marker-9"></div>
+    <div class="train-marker" id="o-train-marker-10"></div>
+    <div class="train-marker" id="o-train-marker-11"></div> <!-- north-berkeley -->
+    <div class="train-marker" id="o-train-marker-12"></div>
+    <div class="train-marker" id="o-train-marker-13"></div> <!-- downtown-berkeley -->
+    <div class="train-marker" id="o-train-marker-14"></div>
+    <div class="train-marker" id="o-train-marker-15"></div> <!-- ashby -->
+    <div class="train-marker" id="o-train-marker-16"></div> 
+    <div class="train-marker" id="o-train-marker-17"></div>
+    <div class="train-marker" id="o-train-marker-18"></div> <!-- macarthur -->
+    <div class="train-marker" id="o-train-marker-19"></div>
+    <div class="train-marker" id="o-train-marker-20"></div>
+    <div class="train-marker" id="o-train-marker-21"></div>
+    <div class="train-marker" id="o-train-marker-22"></div> <!-- nineteenth-st-oakland -->
+    <div class="train-marker" id="o-train-marker-23"></div>
+    <div class="train-marker" id="o-train-marker-24"></div> <!-- twelfth-st-oakland -->
+    <div class="train-marker" id="o-train-marker-25"></div>
+    <div class="train-marker" id="o-train-marker-26"></div>
+    <div class="train-marker" id="o-train-marker-27"></div> <!-- lake-merrit -->
+    <div class="train-marker" id="o-train-marker-28"></div>
+    <div class="train-marker" id="o-train-marker-29"></div>
+    <div class="train-marker" id="o-train-marker-30"></div>
+    <div class="train-marker" id="o-train-marker-31"></div> <!-- fruitvale -->
+    <div class="train-marker" id="o-train-marker-32"></div>
+    <div class="train-marker" id="o-train-marker-33"></div>
+    <div class="train-marker" id="o-train-marker-34"></div>
+    <div class="train-marker" id="o-train-marker-35"></div> <!-- coliseum -->
+    <div class="train-marker" id="o-train-marker-36"></div>
+    <div class="train-marker" id="o-train-marker-37"></div>
+    <div class="train-marker" id="o-train-marker-38"></div>
+    <div class="train-marker" id="o-train-marker-39"></div> <!-- san-leandro -->
+    <div class="train-marker" id="o-train-marker-40"></div>
+    <div class="train-marker" id="o-train-marker-41"></div>
+    <div class="train-marker" id="o-train-marker-42"></div>
+    <div class="train-marker" id="o-train-marker-43"></div> <!-- bay-fair -->
+    <div class="train-marker" id="o-train-marker-44"></div>
+    <div class="train-marker" id="o-train-marker-45"></div>
+    <div class="train-marker" id="o-train-marker-46"></div>
+    <div class="train-marker" id="o-train-marker-47"></div> <!-- hayward -->
+    <div class="train-marker" id="o-train-marker-48"></div>
+    <div class="train-marker" id="o-train-marker-49"></div>
+    <div class="train-marker" id="o-train-marker-50"></div>
+    <div class="train-marker" id="o-train-marker-51"></div> <!-- south-hayward -->
+    <div class="train-marker" id="o-train-marker-52"></div>
+    <div class="train-marker" id="o-train-marker-53"></div>
+    <div class="train-marker" id="o-train-marker-54"></div>
+    <div class="train-marker" id="o-train-marker-55"></div>
+    <div class="train-marker" id="o-train-marker-56"></div> <!-- union-city -->
+    <div class="train-marker" id="o-train-marker-57"></div>
+    <div class="train-marker" id="o-train-marker-58"></div>
+    <div class="train-marker" id="o-train-marker-59"></div>
+    <div class="train-marker" id="o-train-marker-60"></div>
+    <div class="train-marker" id="o-train-marker-61"></div> <!-- fremont -->
+    <!-- end orange line -->
+    <!-- begin red line -->
     <a class="station" id="richmond"></a>
     <div class="train-marker" id="rich-deln-0"></div>
     <div class="train-marker" id="rich-deln-1"></div>
@@ -112,5 +314,126 @@
     <div class="train-marker" id="sbrn-mlbr-5"></div>
     <div class="train-marker" id="sbrn-mlbr-6"></div>
     <a class="station" id="millbrae"></a>
+    <!-- end red line -->
+    <!-- begin yellow line -->
+    <a class="station" id="y-pittsburg"></a>
+    <div class="train-marker" id="y-train-marker-0"></div> <!-- pittsburg -->
+    <div class="train-marker" id="y-train-marker-1"></div>
+    <div class="train-marker" id="y-train-marker-2"></div>
+    <div class="train-marker" id="y-train-marker-3"></div>
+    <div class="train-marker" id="y-train-marker-4"></div>
+    <div class="train-marker" id="y-train-marker-5"></div>
+    <a class="station" id="y-north-concord"></a>
+    <div class="train-marker" id="y-train-marker-6"></div> <!-- north-concord -->
+    <div class="train-marker" id="y-train-marker-7"></div>
+    <div class="train-marker" id="y-train-marker-8"></div>
+    <a class="station" id="y-concord"></a>
+    <div class="train-marker" id="y-train-marker-9"></div> <!-- concord -->
+    <div class="train-marker" id="y-train-marker-10"></div>
+    <div class="train-marker" id="y-train-marker-11"></div>
+    <div class="train-marker" id="y-train-marker-12"></div>
+    <div class="train-marker" id="y-train-marker-13"></div>
+    <a class="station" id="y-pleasant-hill"></a>
+    <div class="train-marker" id="y-train-marker-14"></div> <!-- pleasant-hill -->
+    <div class="train-marker" id="y-train-marker-15"></div> 
+    <a class="station" id="y-walnut-creek"></a>
+    <div class="train-marker" id="y-train-marker-16"></div> <!-- walnut-creek -->
+    <div class="train-marker" id="y-train-marker-17"></div>
+    <div class="train-marker" id="y-train-marker-18"></div>
+    <div class="train-marker" id="y-train-marker-19"></div>
+    <div class="train-marker" id="y-train-marker-20"></div>
+    <a class="station" id="y-lafayette"></a>
+    <div class="train-marker" id="y-train-marker-21"></div> <!-- lafayette -->
+    <div class="train-marker" id="y-train-marker-22"></div>
+    <div class="train-marker" id="y-train-marker-23"></div>
+    <div class="train-marker" id="y-train-marker-24"></div>
+    <div class="train-marker" id="y-train-marker-25"></div>
+    <a class="station" id="y-orinda"></a>
+    <div class="train-marker" id="y-train-marker-26"></div> <!-- orinda -->
+    <div class="train-marker" id="y-train-marker-27"></div>
+    <div class="train-marker" id="y-train-marker-28"></div>
+    <div class="train-marker" id="y-train-marker-29"></div>
+    <div class="train-marker" id="y-train-marker-30"></div>
+    <a class="station" id="y-rockridge"></a>
+    <div class="train-marker" id="y-train-marker-31"></div> <!-- rockridge -->
+    <div class="train-marker" id="y-train-marker-32"></div>
+    <a class="station" id="y-macarthur"></a>
+    <div class="train-marker" id="y-train-marker-33"></div> <!-- macarthur -->
+    <div class="train-marker" id="y-train-marker-34"></div>
+    <div class="train-marker" id="y-train-marker-35"></div>
+    <div class="train-marker" id="y-train-marker-36"></div>
+    <a class="station" id="y-nineteenth-st-oakland"></a>
+    <div class="train-marker" id="y-train-marker-37"></div> <!-- nineteenth-st-oakland -->
+    <div class="train-marker" id="y-train-marker-38"></div>
+    <a class="station" id="y-twelfth-st-oakland"></a>
+    <div class="train-marker" id="y-train-marker-39"></div> <!-- twelfth-st-oakland -->
+    <div class="train-marker" id="y-train-marker-40"></div>
+    <div class="train-marker" id="y-train-marker-41"></div>
+    <div class="train-marker" id="y-train-marker-42"></div>
+    <div class="train-marker" id="y-train-marker-43"></div>
+    <a class="station" id="y-west-oakland"></a>
+    <div class="train-marker" id="y-train-marker-44"></div> <!-- west-oakland -->
+    <div class="train-marker" id="y-train-marker-45"></div>
+    <div class="train-marker" id="y-train-marker-46"></div>
+    <div class="train-marker" id="y-train-marker-47"></div>
+    <div class="train-marker" id="y-train-marker-48"></div>
+    <div class="train-marker" id="y-train-marker-49"></div>
+    <div class="train-marker" id="y-train-marker-50"></div>
+    <div class="train-marker" id="y-train-marker-51"></div>
+    <a class="station" id="y-embarcadero"></a>
+    <div class="train-marker" id="y-train-marker-52"></div> <!-- embarcadero -->
+    <div class="train-marker" id="y-train-marker-53"></div>
+    <a class="station" id="y-montgomery-st"></a>
+    <div class="train-marker" id="y-train-marker-54"></div> <!-- montgomery-st -->
+    <div class="train-marker" id="y-train-marker-55"></div>
+    <a class="station" id="y-powell-st"></a>
+    <div class="train-marker" id="y-train-marker-56"></div> <!-- powell-st -->
+    <div class="train-marker" id="y-train-marker-57"></div>
+    <a class="station" id="y-civic-center"></a>
+    <div class="train-marker" id="y-train-marker-58"></div> <!-- civic-center -->
+    <div class="train-marker" id="y-train-marker-59"></div>
+    <a class="station" id="y-sixteenth-st-mission"></a>
+    <div class="train-marker" id="y-train-marker-60"></div> <!-- sixteenth-st-mission -->
+    <div class="train-marker" id="y-train-marker-61"></div>
+    <a class="station" id="y-twentyfourth-st-mission"></a>
+    <div class="train-marker" id="y-train-marker-62"></div> <!-- twentyfourth-st-mission -->
+    <div class="train-marker" id="y-train-marker-63"></div>
+    <div class="train-marker" id="y-train-marker-64"></div>
+    <a class="station" id="y-glen-park"></a>
+    <div class="train-marker" id="y-train-marker-65"></div> <!-- glen-park -->
+    <div class="train-marker" id="y-train-marker-66"></div>
+    <a class="station" id="y-balboa-park"></a>
+    <div class="train-marker" id="y-train-marker-67"></div> <!-- balboa-park -->
+    <div class="train-marker" id="y-train-marker-68"></div>
+    <div class="train-marker" id="y-train-marker-69"></div>
+    <div class="train-marker" id="y-train-marker-70"></div>
+    <a class="station" id="y-daly-city"></a>
+    <div class="train-marker" id="y-train-marker-71"></div> <!-- daly-city -->
+    <div class="train-marker" id="y-train-marker-72"></div>
+    <div class="train-marker" id="y-train-marker-73"></div>
+    <div class="train-marker" id="y-train-marker-74"></div>
+    <a class="station" id="y-colma"></a>
+    <div class="train-marker" id="y-train-marker-75"></div> <!-- colma -->
+    <div class="train-marker" id="y-train-marker-76"></div>
+    <div class="train-marker" id="y-train-marker-77"></div>
+    <a class="station" id="y-south-san-francisco"></a>
+    <div class="train-marker" id="y-train-marker-78"></div> <!-- south-san-francisco -->
+    <div class="train-marker" id="y-train-marker-79"></div>
+    <div class="train-marker" id="y-train-marker-80"></div>
+    <div class="train-marker" id="y-train-marker-81"></div>
+    <a class="station" id="y-san-bruno"></a>
+    <div class="train-marker" id="y-train-marker-82"></div> <!-- san-bruno -->
+    <div class="train-marker" id="y-train-marker-83"></div>
+    <div class="train-marker" id="y-train-marker-84"></div>
+    <div class="train-marker" id="y-train-marker-85"></div>
+    <div class="train-marker" id="y-train-marker-86"></div>
+    <a class="station" id="y-sfo"></a>
+    <div class="train-marker" id="y-train-marker-87"></div> <!-- sfo -->
+    <div class="train-marker" id="y-train-marker-88"></div>
+    <div class="train-marker" id="y-train-marker-89"></div>
+    <div class="train-marker" id="y-train-marker-90"></div>
+    <a class="station" id="y-millbrae"></a>
+    <div class="train-marker" id="y-train-marker-91"></div> <!-- millbrae -->
+    <!-- end yellow line -->
   </div>
 </body>

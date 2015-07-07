@@ -27,7 +27,7 @@
   width: 6px;
   height: 6px;
   background-color: transparent; 
-  /*border: 1px solid green;*/
+  border: 1px solid green;
 }
 
 .train-icon-bottom-left {
@@ -77,6 +77,1011 @@
   border: 1px solid blue;
 }
 
+.train-icon {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+}
+
+/***************************************** begin blue line ***************************************/
+
+#b-train-marker-0 { /* dublin */
+  top: 545px;
+  left: 853px;
+}
+
+#b-train-marker-1 {
+  top: 548px;
+  left: 828px;
+}
+
+#b-train-marker-2 { /* west-dublin */
+  top: 551px;
+  left: 804px;
+}
+
+#b-train-marker-3 {
+  top: 552px;
+  left: 788px;
+}
+
+#b-train-marker-4 {
+  top: 553px;
+  left: 775px;
+}
+
+#b-train-marker-5 {
+  top: 554px;
+  left: 762px;
+}
+
+#b-train-marker-6 {
+  top: 555px;
+  left: 748px;
+}
+
+#b-train-marker-7 {
+  top: 557px;
+  left: 733px;
+}
+
+#b-train-marker-8 {
+  top: 558px;
+  left: 721px;
+}
+
+#b-train-marker-9 {
+  top: 559px;
+  left: 705px;
+}
+
+#b-train-marker-10 {
+  top: 561px;
+  left: 690px;
+}
+
+#b-train-marker-11 {
+  top: 562px;
+  left: 676px;
+}
+
+#b-train-marker-12 {
+  top: 563px;
+  left: 662px;
+}
+
+#b-train-marker-13 { /* castro-valley */
+  top: 565px;
+  left: 648px;
+}
+
+#b-train-marker-14 {
+  top: 566px;
+  left: 624px;
+}
+
+#b-train-marker-15 {
+  top: 568px;
+  left: 600px;
+}
+
+#b-train-marker-16 {
+  top: 559px;
+  left: 575px;
+}
+
+#b-train-marker-17 { /* bay-fair */
+  top: 545px;
+  left: 561px;
+}
+
+#b-train-marker-18 {
+  top: 537px;
+  left: 554px;
+}
+
+#b-train-marker-19 {
+  top: 528px;
+  left: 546px;
+}
+
+#b-train-marker-20 {
+  top: 520px;
+  left: 538px;
+}
+
+#b-train-marker-21 { /* san-leandro */
+  top: 514px;
+  left: 531px;
+}
+
+#b-train-marker-22 {
+  top: 505px;
+  left: 523px;
+}
+
+#b-train-marker-23 {
+  top: 497px;
+  left: 516px;
+}
+
+#b-train-marker-24 {
+  top: 490px;
+  left: 508px;
+}
+
+#b-train-marker-25 { /* coliseum */
+  top: 485px;
+  left: 503px;
+}
+
+#b-train-marker-26 {
+  top: 477px;
+  left: 496px;
+}
+
+#b-train-marker-27 {
+  top: 469px;
+  left: 488px;
+}
+
+#b-train-marker-28 {
+  top: 461px;
+  left: 480px;
+}
+
+#b-train-marker-29 { /* fruitvale */
+  top: 453px;
+  left: 473px;
+}
+
+#b-train-marker-30 {
+  top: 446px;
+  left: 466px;
+}
+
+#b-train-marker-31 {
+  top: 438px;
+  left: 458px;
+}
+
+#b-train-marker-32 {
+  top: 430px;
+  left: 450px;
+}
+
+#b-train-marker-33 { /* lake-merrit */
+  top: 424px;
+  left: 444px;
+}
+
+#b-train-marker-34 {
+  top: 412px;
+  left: 433px;
+}
+
+#b-train-marker-35 {
+  top: 399px;
+  left: 420px;
+}
+
+#b-train-marker-36 {
+  top: 391px;
+  left: 401px;
+}
+
+#b-train-marker-37 {
+  top: 392px;
+  left: 383px;
+}
+
+#b-train-marker-38 {
+  top: 395px;
+  left: 366px;
+}
+
+#b-train-marker-39 { /* west-oakland */
+  top: 397px; 
+  left: 349px; 
+}
+
+#b-train-marker-40 {
+  top: 398px; 
+  left: 336px; 
+}
+
+#b-train-marker-41 {
+  top: 401px; 
+  left: 323px; 
+}
+
+#b-train-marker-42 {
+  top: 403px; 
+  left: 309px; 
+}
+
+#b-train-marker-43 {
+  top: 405px; 
+  left: 295px; 
+}
+
+#b-train-marker-44 {
+  top: 407px; 
+  left: 281px; 
+}
+
+#b-train-marker-45 {
+  top: 409px; 
+  left: 270px;
+}
+
+#b-train-marker-46 {
+  top: 413px; 
+  left: 258px; 
+}
+
+#b-train-marker-47 { /* embarcadero */
+  top: 420px; 
+  left: 250px; 
+}
+
+#b-train-marker-48 {
+  top: 426px; 
+  left: 245px; 
+}
+
+#b-train-marker-49 { /* montgomery-st */
+  top: 433px; 
+  left: 241px; 
+}
+
+#b-train-marker-50 {
+  top: 440px; 
+  left: 236px; 
+}
+
+#b-train-marker-51 { /* powell-st */
+  top: 447px; 
+  left: 231px; 
+}
+
+#b-train-marker-52 {
+  top: 454px; 
+  left: 226px; 
+}
+
+#b-train-marker-53 { /* civic-center */
+  top: 461px; 
+  left: 221px; 
+}
+
+#b-train-marker-54 {
+  top: 469px; 
+  left: 216px; 
+}
+
+#b-train-marker-55 { /* sixteenth-st-mission */
+  top: 478px; 
+  left: 210px; 
+}
+
+#b-train-marker-56 {
+  top: 487px; 
+  left: 204px; 
+}
+
+#b-train-marker-57 { /* twentyfourth-st-mission */
+  top: 496px; 
+  left: 198px; 
+}
+
+#b-train-marker-58 {
+  top: 501px; 
+  left: 195px; 
+}
+
+#b-train-marker-59 {
+  top: 506px; 
+  left: 192px;
+}
+
+#b-train-marker-60 { /* glen-park */
+  top: 511px; 
+  left: 188px; 
+}
+
+#b-train-marker-61 {
+  top: 519px; 
+  left: 183px; 
+}
+
+#b-train-marker-62 { /* balboa-park */
+  top: 528px; 
+  left: 177px; 
+}
+
+#b-train-marker-63 {
+  top: 532px; 
+  left: 174px; 
+}
+
+#b-train-marker-64 {
+  top: 537px; 
+  left: 171px; 
+}
+
+#b-train-marker-65 {
+  top: 541px; 
+  left: 168px; 
+}
+
+#b-train-marker-66 { /* daly-city */
+  top: 547px; 
+  left: 166px; 
+}
+
+/****************************************** end blue line ****************************************/
+
+/**************************************** begin green line ***************************************/
+
+#g-train-marker-0 { /* fremont */
+  top: 776px;
+  left: 751px;
+}
+
+#g-train-marker-1 {
+  top: 767px;
+  left: 742px;
+}
+
+#g-train-marker-2 {
+  top: 758px;
+  left: 734px;
+}
+
+#g-train-marker-3 {
+  top: 749px;
+  left: 725px;
+}
+
+#g-train-marker-4 {
+  top: 740px;
+  left: 716px;
+}
+
+#g-train-marker-5 { /* union-city */
+  top: 732px;
+  left: 710px;
+}
+
+#g-train-marker-6 {
+  top: 720px;
+  left: 697px;
+}
+
+#g-train-marker-7 {
+  top: 709px;
+  left: 687px;
+}
+
+#g-train-marker-8 {
+  top: 698px;
+  left: 676px;
+}
+
+#g-train-marker-9 {
+  top: 686px;
+  left: 665px;
+}
+
+#g-train-marker-10 { /* south-hayward */
+  top: 675px;
+  left: 654px;
+}
+
+#g-train-marker-11 {
+  top: 662px;
+  left: 641px;
+}
+
+#g-train-marker-12 {
+  top: 650px;
+  left: 630px;
+}
+
+#g-train-marker-13 {
+  top: 638px;
+  left: 618px;
+}
+
+#g-train-marker-14 { /* hayward */
+  top: 625px;
+  left: 606px;
+}
+
+#g-train-marker-15 {
+  top: 610px;
+  left: 591px;
+}
+
+#g-train-marker-16 {
+  top: 593px;
+  left: 575px;
+}
+
+#g-train-marker-17 {
+  top: 575px;
+  left: 557px;
+}
+
+#g-train-marker-18 { /* bay-fair */
+  top: 561px;
+  left: 544px;
+}
+
+#g-train-marker-19 {
+  top: 553px;
+  left: 536px;
+}
+
+#g-train-marker-20 {
+  top: 545px;
+  left: 528px;
+}
+
+#g-train-marker-21 {
+  top: 536px;
+  left: 520px;
+}
+
+#g-train-marker-22 { /* san-leandro */
+  top: 529px;
+  left: 514px;
+}
+
+#g-train-marker-23 {
+  top: 522px;
+  left: 506px;
+}
+
+#g-train-marker-24 {
+  top: 514px;
+  left: 499px;
+}
+
+#g-train-marker-25 {
+  top: 507px;
+  left: 492px;
+}
+
+#g-train-marker-26 { /* coliseum */
+  top: 500px;
+  left: 486px;
+}
+
+#g-train-marker-27 {
+  top: 492px;
+  left: 477px;
+}
+
+#g-train-marker-28 {
+  top: 484px;
+  left: 470px;
+}
+
+#g-train-marker-29 {
+  top: 476px;
+  left: 462px;
+}
+
+#g-train-marker-30 { /* fruitvale */
+  top: 469px;
+  left: 456px;
+}
+
+#g-train-marker-31 {
+  top: 461px;
+  left: 448px;
+}
+
+#g-train-marker-32 {
+  top: 453px;
+  left: 440px;
+}
+
+#g-train-marker-33 {
+  top: 446px;
+  left: 433px;
+}
+
+#g-train-marker-34 { /* lake-merrit */
+  top: 439px;
+  left: 428px;
+}
+
+#g-train-marker-35 {
+  top: 428px;
+  left: 416px;
+}
+
+#g-train-marker-36 {
+  top: 418px;
+  left: 406px;
+}
+
+#g-train-marker-37 {
+  top: 409px;
+  left: 395px;
+}
+
+#g-train-marker-38 {
+  top: 405px;
+  left: 383px;
+}
+
+#g-train-marker-39 {
+  top: 406px;
+  left: 366px;
+}
+
+#g-train-marker-40 { /* west-oakland */
+  top: 409px; 
+  left: 350px; 
+}
+
+#g-train-marker-41 {
+  top: 410px; 
+  left: 338px; 
+}
+
+#g-train-marker-42 {
+  top: 412px; 
+  left: 326px; 
+}
+
+#g-train-marker-43 {
+  top: 413px; 
+  left: 314px; 
+}
+
+#g-train-marker-44 {
+  top: 415px; 
+  left: 301px; 
+}
+
+#g-train-marker-45 {
+  top: 417px; 
+  left: 287px; 
+}
+
+#g-train-marker-46 {
+  top: 419px; 
+  left: 275px;
+}
+
+#g-train-marker-47 {
+  top: 423px; 
+  left: 264px; 
+}
+
+#g-train-marker-48 { /* embarcadero */
+  top: 428px; 
+  left: 259px; 
+}
+
+#g-train-marker-49 {
+  top: 433px; 
+  left: 254px; 
+}
+
+#g-train-marker-50 { /* montgomery-st */
+  top: 440px; 
+  left: 250px; 
+}
+
+#g-train-marker-51 {
+  top: 447px; 
+  left: 245px; 
+}
+
+#g-train-marker-52 { /* powell-st */
+  top: 453px; 
+  left: 241px; 
+}
+
+#g-train-marker-53 {
+  top: 460px; 
+  left: 236px; 
+}
+
+#g-train-marker-54 { /* civic-center */
+  top: 467px; 
+  left: 231px; 
+}
+
+#g-train-marker-55 {
+  top: 476px; 
+  left: 226px; 
+}
+
+#g-train-marker-56 { /* sixteenth-st-mission */
+  top: 484px; 
+  left: 220px; 
+}
+
+#g-train-marker-57 {
+  top: 493px; 
+  left: 214px; 
+}
+
+#g-train-marker-58 { /* twentyfourth-st-mission */
+  top: 502px; 
+  left: 208px; 
+}
+
+#g-train-marker-59 {
+  top: 507px; 
+  left: 205px; 
+}
+
+#g-train-marker-60 {
+  top: 512px; 
+  left: 202px;
+}
+
+#g-train-marker-61 { /* glen-park */
+  top: 518px; 
+  left: 197px; 
+}
+
+#g-train-marker-62 {
+  top: 526px; 
+  left: 192px; 
+}
+
+#g-train-marker-63 { /* balboa-park */
+  top: 533px; 
+  left: 187px; 
+}
+
+#g-train-marker-64 {
+  top: 537px; 
+  left: 185px; 
+}
+
+#g-train-marker-65 {
+  top: 540px; 
+  left: 183px; 
+}
+
+#g-train-marker-66 {
+  top: 543px; 
+  left: 181px; 
+}
+
+#g-train-marker-67 { /* daly-city */
+  top: 547px; 
+  left: 178px; 
+}
+
+/***************************************** end green line ****************************************/
+
+/**************************************** begin orange line **************************************/
+
+#o-train-marker-0 { /* richmond */
+  top: 143px;
+  left: 318px;
+}
+
+#o-train-marker-1 {
+  top: 149px;
+  left: 322px;
+}
+
+#o-train-marker-2 {
+  top: 154px;
+  left: 326px;
+}
+
+#o-train-marker-3 {
+  top: 158px;
+  left: 329px;
+}
+
+#o-train-marker-4 { /* el-cerrito-del-norte */
+  top: 162px; 
+  left: 331px; 
+}
+
+#o-train-marker-5 {
+  top: 170px; 
+  left: 337px; 
+}
+
+#o-train-marker-6 { 
+  top: 179px; 
+  left: 344px; 
+}
+
+#o-train-marker-7 { /* el-cerrito-plaza */
+  top: 187px; 
+  left: 349px; 
+}
+
+#o-train-marker-8 {
+  top: 195px; 
+  left: 355px; 
+}
+
+#o-train-marker-9 {
+  top: 202px; 
+  left: 360px; 
+}
+
+#o-train-marker-10 {
+  top: 208px; 
+  left: 364px; 
+}
+
+#o-train-marker-11 { /* north-berkeley */
+  top: 215px; 
+  left: 368px; 
+}
+
+#o-train-marker-12 {
+  top: 225px; 
+  left: 376px; 
+}
+
+#o-train-marker-13 { /* downtown-berkeley */
+  top: 237px; 
+  left: 384px; 
+}
+
+#o-train-marker-14 {
+  top: 247px; 
+  left: 391px; 
+}
+
+#o-train-marker-15 { /* ashby */
+  top: 256px; 
+  left: 397px; 
+}
+
+#o-train-marker-16 {
+  top: 268px; 
+  left: 406px; 
+}
+
+#o-train-marker-17 {
+  top: 284px; 
+  left: 412px; 
+}
+
+#o-train-marker-18 { /* macarthur */
+  top: 301px; 
+  left: 413px; 
+}
+
+#o-train-marker-19 {
+  top: 305px; 
+  left: 412px; 
+}
+
+#o-train-marker-20 {
+  top: 313px; 
+  left: 412px; 
+}
+
+#o-train-marker-21 {
+  top: 319px; 
+  left: 412px; 
+}
+
+#o-train-marker-22 { /* nineteenth-st-oakland */
+  top: 326px; 
+  left: 411px; 
+}
+
+#o-train-marker-23 {
+  top: 338px; 
+  left: 410px; 
+}
+
+#o-train-marker-24 { /* twelfth-st-oakland */
+  top: 351px;
+  left: 409px; 
+}
+
+#o-train-marker-25 {
+  top: 380px;
+  left: 408px; 
+}
+
+#o-train-marker-26 {
+  top: 411px;
+  left: 416px; 
+}
+
+#o-train-marker-27 { /* lake-merrit */
+  top: 432px;
+  left: 436px;
+}
+
+#o-train-marker-28 {
+  top: 438px;
+  left: 442px;
+}
+
+#o-train-marker-29 {
+  top: 446px;
+  left: 450px;
+}
+
+#o-train-marker-30 {
+  top: 453px;
+  left: 457px;
+}
+
+#o-train-marker-31 { /* fruitvale */
+  top: 461px;
+  left: 464px;
+}
+
+#o-train-marker-32 {
+  top: 468px;
+  left: 471px;
+}
+
+#o-train-marker-33 {
+  top: 476px;
+  left: 478px;
+}
+
+#o-train-marker-34 {
+  top: 484px;
+  left: 486px;
+}
+
+#o-train-marker-35 { /* coliseum */
+  top: 492px;
+  left: 494px;
+}
+
+#o-train-marker-36 {
+  top: 499px;
+  left: 501px;
+}
+
+#o-train-marker-37 {
+  top: 506px;
+  left: 508px;
+}
+
+#o-train-marker-38 {
+  top: 514px;
+  left: 515px;
+}
+
+#o-train-marker-39 { /* san-leandro */
+  top: 522px;
+  left: 523px;
+}
+
+#o-train-marker-40 {
+  top: 530px;
+  left: 531px;
+}
+
+#o-train-marker-41 {
+  top: 538px;
+  left: 538px;
+}
+
+#o-train-marker-42 {
+  top: 546px;
+  left: 546px;
+}
+
+#o-train-marker-43 { /* bay-fair */
+  top: 553px;
+  left: 553px;
+}
+
+#o-train-marker-44 {
+  top: 567px;
+  left: 566px;
+}
+
+#o-train-marker-45 {
+  top: 584px;
+  left: 582px;
+}
+
+#o-train-marker-46 {
+  top: 602px;
+  left: 599px;
+}
+
+#o-train-marker-47 { /* hayward */
+  top: 617px;
+  left: 614px;
+}
+
+#o-train-marker-48 {
+  top: 630px;
+  left: 626px;
+}
+
+#o-train-marker-49 {
+  top: 643px;
+  left: 639px;
+}
+
+#o-train-marker-50 {
+  top: 655px;
+  left: 650px;
+}
+
+#o-train-marker-51 { /* south-hayward */
+  top: 667px;
+  left: 662px;
+}
+
+#o-train-marker-52 {
+  top: 678px;
+  left: 673px;
+}
+
+#o-train-marker-53 {
+  top: 690px;
+  left: 684px;
+}
+
+#o-train-marker-54 {
+  top: 702px;
+  left: 696px;
+}
+
+#o-train-marker-55 {
+  top: 713px;
+  left: 706px;
+}
+
+#o-train-marker-56 { /* union-city */
+  top: 725px;
+  left: 717px;
+}
+
+#o-train-marker-57 {
+  top: 733px;
+  left: 725px;
+}
+
+#o-train-marker-58 {
+  top: 742px;
+  left: 734px;
+}
+
+#o-train-marker-59 {
+  top: 750px;
+  left: 742px;
+}
+
+#o-train-marker-60 {
+  top: 759px;
+  left: 750px;
+}
+
+#o-train-marker-61 { /* fremont */
+  top: 767px;
+  left: 759px;
+}
+
+/***************************************** end orange line ***************************************/
+
+/***************************************** begin red line ****************************************/
+
 #richmond {
   top: 146px;
   left: 305px;
@@ -119,7 +1124,7 @@
 
 #twelfth-st-oakland { 
   top: 347px;
-  left: 395px; 
+  left: 395px;
 }
 
 #west-oakland { 
@@ -562,8 +1567,597 @@
   left: 252px; 
 }
 
-.train-icon {
-  position: absolute;
-  width: 17px;
-  height: 17px;
+/****************************************** end red line *****************************************/
+
+/**************************************** begin yellow line **************************************/
+
+#y-pittsburg {
+  top: 47px;
+  left: 802px;
 }
+
+#y-north-concord {
+  top: 74px;
+  left: 757px;
+}
+
+#y-concord {
+  top: 107px;
+  left: 704px;
+}
+
+#y-pleasant-hill {
+  top: 136px;
+  left: 656px;
+}
+
+#y-walnut-creek {
+  top: 168px;
+  left: 602px;
+}
+
+#y-lafayette {
+  top: 198px;
+  left: 552px;
+}
+
+#y-orinda {
+  top: 229px;
+  left: 503px;
+}
+
+#y-rockridge {
+  top: 259px;
+  left: 453px;
+}
+
+#y-macarthur { 
+  top: 298px; 
+  left: 421px; 
+}
+
+#y-nineteenth-st-oakland { 
+  top: 322px; 
+  left: 419px; 
+}
+
+#y-twelfth-st-oakland { 
+  top: 347px;
+  left: 418px;
+}
+
+#y-west-oakland { 
+  top: 382px; 
+  left: 344px; 
+}
+
+#y-embarcadero { 
+  top: 409px; 
+  left: 237px; 
+}
+
+#y-montgomery-st { 
+  top: 423px; 
+  left: 227px; 
+}
+
+#y-powell-st { 
+  top: 437px; 
+  left: 218px; 
+}
+
+#y-civic-center { 
+  top: 452px; 
+  left: 208px; 
+}
+
+#y-sixteenth-st-mission { 
+  top: 468px; 
+  left: 197px; 
+}
+
+#y-twentyfourth-st-mission { 
+  top: 485px; 
+  left: 185px; 
+}
+
+#y-glen-park { 
+  top: 501px; 
+  left: 174px; 
+}
+
+#y-balboa-park { 
+  top: 517px; 
+  left: 163px; 
+}
+
+#y-daly-city { 
+  top: 543px; 
+  left: 151px; 
+}
+
+#y-colma { 
+  top: 565px; 
+  left: 165px; 
+}
+
+#y-south-san-francisco { 
+  top: 594px; 
+  left: 184px; 
+}
+
+#y-san-bruno { 
+  top: 630px; 
+  left: 209px; 
+}
+
+#y-sfo { 
+  top: 667px; 
+  left: 253px; 
+}
+
+#y-millbrae { 
+  top: 700px; 
+  left: 259px; 
+}
+
+#y-train-marker-0 { /* pittsburg */
+  top: 50px;
+  left: 805px;
+}
+
+#y-train-marker-1 {
+  top: 56px;
+  left: 797px;
+}
+
+#y-train-marker-2 {
+  top: 61px;
+  left: 789px;
+}
+
+#y-train-marker-3 {
+  top: 65px;
+  left: 783px;
+}
+
+#y-train-marker-4 {
+  top: 69px;
+  left: 776px;
+}
+
+#y-train-marker-5 {
+  top: 74px;
+  left: 768px;
+}
+
+#y-train-marker-6 { /* north-concord */
+  top: 78px;
+  left: 760px;
+}
+
+#y-train-marker-7 {
+  top: 89px;
+  left: 743px;
+}
+
+#y-train-marker-8 {
+  top: 101px;
+  left: 724px;
+}
+
+#y-train-marker-9 { /* concord */
+  top: 111px;
+  left: 707px;
+}
+
+#y-train-marker-10 {
+  top: 116px;
+  left: 698px;}
+
+#y-train-marker-11 {
+  top: 122px;
+  left: 689px;
+}
+
+#y-train-marker-12 {
+  top: 127px;
+  left: 680px;
+}
+
+#y-train-marker-13 {
+  top: 133px;
+  left: 671px;
+}
+
+#y-train-marker-14 { /* pleasant-hill */
+  top: 140px;
+  left: 659px;
+}
+
+#y-train-marker-15 {
+  top: 156px;
+  left: 632px;
+}
+
+#y-train-marker-16 { /* walnut-creek */
+  top: 172px;
+  left: 605px;
+}
+
+#y-train-marker-17 {
+  top: 179px;
+  left: 595px;
+}
+
+#y-train-marker-18 {
+  top: 185px;
+  left: 586px;
+}
+
+#y-train-marker-19 {
+  top: 191px;
+  left: 576px;
+}
+
+#y-train-marker-20 {
+  top: 197px;
+  left: 566px;
+}
+
+#y-train-marker-21 { /* lafayette */
+  top: 202px;
+  left: 556px;
+}
+
+#y-train-marker-22 {
+  top: 209px;
+  left: 546px;
+}
+
+#y-train-marker-23 {
+  top: 215px;
+  left: 537px;
+}
+
+#y-train-marker-24 {
+  top: 222px;
+  left: 526px;
+}
+
+#y-train-marker-25 {
+  top: 227px;
+  left: 516px;
+}
+
+#y-train-marker-26 { /* orinda */
+  top: 233px;
+  left: 505px;
+}
+
+#y-train-marker-27 {
+  top: 239px;
+  left: 497px;
+}
+
+#y-train-marker-28 {
+  top: 246px;
+  left: 486px;
+}
+
+#y-train-marker-29 {
+  top: 252px;
+  left: 476px;
+}
+
+#y-train-marker-30 {
+  top: 258px;
+  left: 465px;
+}
+
+#y-train-marker-31 { /* rockridge */
+  top: 263px;
+  left: 455px;
+}
+
+#y-train-marker-32 {
+  top: 277px;
+  left: 435px;
+}
+
+#y-train-marker-33 { /* macarthur */
+  top: 301px; 
+  left: 424px; 
+}
+
+#y-train-marker-34 {
+  top: 305px; 
+  left: 424px; 
+}
+
+#y-train-marker-35 {
+  top: 313px; 
+  left: 423px; 
+}
+
+#y-train-marker-36 {
+  top: 319px; 
+  left: 423px; 
+}
+
+#y-train-marker-37 { /* nineteenth-st-oakland */
+  top: 326px; 
+  left: 422px; 
+}
+
+#y-train-marker-38 {
+  top: 338px; 
+  left: 422px; 
+}
+
+#y-train-marker-39 { /* twelfth-st-oakland */
+  top: 351px;
+  left: 421px; 
+}
+
+#y-train-marker-40 {
+  top: 366px;
+  left: 418px; 
+}
+
+#y-train-marker-41 {
+  top: 377px;
+  left: 401px; 
+}
+
+#y-train-marker-42 {
+  top: 380px;
+  left: 382px; 
+}
+
+#y-train-marker-43 {
+  top: 383px;
+  left: 362px; 
+}
+
+#y-train-marker-44 { /* west-oakland */
+  top: 386px; 
+  left: 348px; 
+}
+
+#y-train-marker-45 {
+  top: 388px; 
+  left: 330px; 
+}
+
+#y-train-marker-46 {
+  top: 390px; 
+  left: 316px; 
+}
+
+#y-train-marker-47 {
+  top: 392px; 
+  left: 304px; 
+}
+
+#y-train-marker-48 {
+  top: 395px; 
+  left: 290px; 
+}
+
+#y-train-marker-49 {
+  top: 397px; 
+  left: 277px; 
+}
+
+#y-train-marker-50 {
+  top: 399px; 
+  left: 264px;
+}
+
+#y-train-marker-51 {
+  top: 406px; 
+  left: 250px; 
+}
+
+#y-train-marker-52 { /* embarcadero */
+  top: 413px; 
+  left: 241px; 
+}
+
+#y-train-marker-53 {
+  top: 420px; 
+  left: 236px; 
+}
+
+#y-train-marker-54 { /* montgomery-st */
+  top: 426px; 
+  left: 231px; 
+}
+
+#y-train-marker-55 {
+  top: 433px; 
+  left: 227px; 
+}
+
+#y-train-marker-56 { /* powell-st */
+  top: 440px; 
+  left: 222px; 
+}
+
+#y-train-marker-57 {
+  top: 448px; 
+  left: 217px; 
+}
+
+#y-train-marker-58 { /* civic-center */
+  top: 455px; 
+  left: 212px; 
+}
+
+#y-train-marker-59 {
+  top: 463px; 
+  left: 206px; 
+}
+
+#y-train-marker-60 { /* sixteenth-st-mission */
+  top: 471px; 
+  left: 200px; 
+}
+
+#y-train-marker-61 {
+  top: 480px; 
+  left: 195px; 
+}
+
+#y-train-marker-62 { /* twentyfourth-st-mission */
+  top: 488px; 
+  left: 189px; 
+}
+
+#y-train-marker-63 {
+  top: 493px; 
+  left: 186px; 
+}
+
+#y-train-marker-64 {
+  top: 498px; 
+  left: 183px;
+}
+
+#y-train-marker-65 { /* glen-park */
+  top: 505px; 
+  left: 178px; 
+}
+
+#y-train-marker-66 {
+  top: 513px; 
+  left: 173px; 
+}
+
+#y-train-marker-67 { /* balboa-park */
+  top: 521px; 
+  left: 167px; 
+}
+
+#y-train-marker-68 {
+  top: 528px; 
+  left: 163px; 
+}
+
+#y-train-marker-69 {
+  top: 533px; 
+  left: 160px; 
+}
+
+#y-train-marker-70 {
+  top: 539px; 
+  left: 155px; 
+}
+
+#y-train-marker-71 { /* daly-city */
+  top: 547px; 
+  left: 154px; 
+}
+
+#y-train-marker-72 {
+  top: 555px; 
+  left: 158px; 
+}
+
+#y-train-marker-73 {
+  top: 560px; 
+  left: 161px; 
+}
+
+#y-train-marker-74 {
+  top: 565px; 
+  left: 165px; 
+}
+
+#y-train-marker-75 { /* colma */
+  top: 570px; 
+  left: 168px; 
+}
+
+#y-train-marker-76 {
+  top: 579px; 
+  left: 175px; 
+}
+
+#y-train-marker-77 {
+  top: 588px; 
+  left: 181px; 
+}
+
+#y-train-marker-78 { /* south-san-francisco */
+  top: 598px; 
+  left: 187px; 
+}
+
+#y-train-marker-79 {
+  top: 607px; 
+  left: 194px; 
+}
+
+#y-train-marker-80 {
+  top: 617px; 
+  left: 201px; 
+}
+
+#y-train-marker-81 {
+  top: 627px; 
+  left: 208px; 
+}
+
+#y-train-marker-82 { /* san-bruno */
+  top: 633px; 
+  left: 212px; 
+}
+
+#y-train-marker-83 {
+  top: 642px; 
+  left: 220px; 
+}
+
+#y-train-marker-84 {
+  top: 652px; 
+  left: 226px; 
+}
+
+#y-train-marker-85 {
+  top: 658px; 
+  left: 236px; 
+}
+
+#y-train-marker-86 {
+  top: 663px; 
+  left: 245px; 
+}
+
+#y-train-marker-87 { /* sfo */
+  top: 670px;
+  left: 257px;
+}
+
+#y-train-marker-88 {
+  top: 678px;
+  left: 258px;
+}
+
+#y-train-marker-89 {
+  top: 686px;
+  left: 260px;
+}
+
+#y-train-marker-90 {
+  top: 694px;
+  left: 261px;
+}
+
+#y-train-marker-91 { /* millbrae */
+  top: 704px;
+  left: 262px;
+}
+
+/***************************************** end yellow line ***************************************/
