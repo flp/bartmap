@@ -4,6 +4,8 @@
 var API_KEY = 'QAVH-UAY7-IQZQ-DT35'
 var BASE_URL = 'http://api.bart.gov/api'
 
+var FADE_OUT_DURATION = 1000;
+
 /**
  * Object that represents an estimated time of departure for a station.
  * What an estimate means: a train is estimated to leave from 'stationName' 
@@ -1629,18 +1631,12 @@ function getLiveTrainSpotsYellow(station, adjacentTrains) {
   return ids;
 }
 
-function clearTrains() {
+function drawTrains(station, idsAndClassesAndImages) {
   /**
-   * Removes train icons from the DOM.
-   */
-  $('.train-icon').remove();
-}
-
-function drawTrains(idsAndClassesAndImages) {
-  /**
-   * Draws trains.
+   * Draws trains for station.
    *
    * Args:
+   *   station - Station name, e.g. 'dublin'.
    *   idsAndClassesAndImages - Array of [CSS id to draw train in, CSS class to use for train icon,
                                           base name of image file].
    */
@@ -1649,8 +1645,9 @@ function drawTrains(idsAndClassesAndImages) {
     var cssClass = idsAndClassesAndImages[i][1];
     var imageName = idsAndClassesAndImages[i][2];
     var trainDiv = $('#' + cssId);
-    trainDiv.append('<img class="train-icon {0}" src="/static/bartmap/images/{1}" />'.format(
-      cssClass, imageName));
+    trainDiv.append(
+      '<img class="train-icon {0} {1}" src="/static/bartmap/images/{2}" />'.format(
+        cssClass, station, imageName));
   }
 }
 
@@ -1676,7 +1673,7 @@ function getEstimatesFromXml(stationXml) {
     if ($destination == null) {
       $destination = "millbrae";
     }
-    var $destAbbr = $(this).find("abbr").text();
+    var $destAbbr = $(this).find("abr").text();
     $(this).children("estimate").each(function() {
       var estimate = new Estimate(
         stationNameDictionary[$stationXml.find("name").text()], // stationName
@@ -1702,42 +1699,48 @@ function processRealtimeEstimates(station, estimates) {
   /**
    *
    */
+  var drawSpots = [];
+
   if (station in blueStations) {
     var adjacentEstimates = getAdjacentBlueTrains(station, estimates);
-    var drawSpots = getLiveTrainSpotsBlue(station, adjacentEstimates);
-    drawTrains(drawSpots);
+    drawSpots = drawSpots.concat(getLiveTrainSpotsBlue(station, adjacentEstimates));
   }
 
   if (station in greenStations) {
     var adjacentEstimates = getAdjacentGreenTrains(station, estimates);
-    var drawSpots = getLiveTrainSpotsGreen(station, adjacentEstimates);
-    drawTrains(drawSpots);
+    drawSpots = drawSpots.concat(getLiveTrainSpotsGreen(station, adjacentEstimates));
   }
 
   if (station in orangeStations) {
     var adjacentEstimates = getAdjacentOrangeTrains(station, estimates);
-    var drawSpots = getLiveTrainSpotsOrange(station, adjacentEstimates);
-    drawTrains(drawSpots);
+    drawSpots = drawSpots.concat(getLiveTrainSpotsOrange(station, adjacentEstimates));
   }
 
   if (station in redStations) {
     var adjacentEstimates = getAdjacentRedTrains(station, estimates);
-    var drawSpots = getLiveTrainSpotsRed(station, adjacentEstimates);
-    drawTrains(drawSpots);
+    drawSpots = drawSpots.concat(getLiveTrainSpotsRed(station, adjacentEstimates));
   }
 
   if (station in yellowStations) {
     var adjacentEstimates = getAdjacentYellowTrains(station, estimates);
-    var drawSpots = getLiveTrainSpotsYellow(station, adjacentEstimates);
-    drawTrains(drawSpots);
+    drawSpots = drawSpots.concat(getLiveTrainSpotsYellow(station, adjacentEstimates));
   }
+
+  // Fade out existing trains and draw new trains.
+  var $trains = $('.{0}.train-icon'.format(station));
+  $trains.fadeOut(1000);
+  setTimeout(function() {
+    $trains.remove();
+    drawTrains(station, drawSpots);
+    $trains = $('.{0}.train-icon'.format(station));
+    $trains.fadeIn(1000);
+  }, 500);
 }
 
 function run(xmlData) {
   var $xml = $(xmlData);
   var $rootXml = $xml.find('root');
   var $stationXml = $rootXml.find('station');
-  clearTrains(); // TODO: do this at the station level
 
   $stationXml.each(function() {
     var $stationNameBart = $(this).find('name').text();
@@ -1748,7 +1751,9 @@ function run(xmlData) {
 }
 
 $(document).ready(function() {
-  interval = 5*1000; // 5 seconds
+  getDepartures('all', run);
+
+  // Run main event loop every 10 seconds.
+  interval = 10*1000;
   setInterval(getDepartures, interval, 'all', run);
-  //getDepartures('all', run);
 });
