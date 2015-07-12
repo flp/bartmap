@@ -1,11 +1,16 @@
+<!DOCTYPE html>
 {% load staticfiles %}
 
+<html>
 <head>
+  <title>Real-time BART</title>
   <link rel="stylesheet" type="text/css" href="{% static 'bartmap/style.css' %}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'bartmap/main.js' %}"></script>
 </head>
 <body>
+  <p>Click on a train and get real-time info.</p>
+  <p><a href="https://github.com/flp/bartmap" target="_blank">code</a></p>
   <div id="bartmap">
     <!-- begin blue line -->
     <div class="train-marker" id="b-train-marker-0"></div> <!-- dublin -->
@@ -431,3 +436,4 @@
     <!-- end yellow line -->
   </div>
 </body>
+</html>

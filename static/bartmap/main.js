@@ -6,6 +6,8 @@ var BASE_URL = 'http://api.bart.gov/api'
 
 var FADE_OUT_DURATION = 1000;
 
+var TRAIN_INFO_CACHE = {};
+
 /**
  * Object that represents an estimated time of departure for a station.
  * What an estimate means: a train is estimated to leave from 'stationName' 
@@ -80,6 +82,13 @@ var stationNameDictionary = {
   'Walnut Creek': 'walnut-creek',
   'West Dublin': 'west-dublin',
   'West Oakland': 'west-oakland',
+}
+
+var stationNameDictionaryReverse = {};
+for (var i = 0; i < Object.keys(stationNameDictionary).length; i++) {
+  key = stationNameDictionary[Object.keys(stationNameDictionary)[i]];
+  value = Object.keys(stationNameDictionary)[i];
+  stationNameDictionaryReverse[key] = value;
 }
 
 var blueStations = {
@@ -1379,22 +1388,30 @@ function getLiveTrainSpotsBlue(station, adjacentTrains) {
       var estMinutes = adjacentTrains['daly-city'][i].minutes;
       var index = avgWestTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['daly-city'][index], 'train-icon-bottom-left', 'train_icon_east.png']);
+      id = trainSpots['daly-city'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['daly-city'][i];
     }
     for (var i = 0; i < adjacentTrains['dublin'].length; i++) { // trains going to dublin
       var estMinutes = adjacentTrains['dublin'][i].minutes;
       var index = avgEastTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['dublin'][index], 'train-icon-top-right', 'train_icon_west.png']);
+      id = trainSpots['dublin'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['dublin'][i];
     }
   } else { // all other stations
     for (var i = 0; i < adjacentTrains['daly-city'].length; i++) { // trains going to daly-city
       var estMinutes = adjacentTrains['daly-city'][i].minutes;
       var index = avgEastTime - estMinutes;
       ids.push([trainSpots['daly-city'][index], 'train-icon-top-right', 'train_icon_west.png']);
+      id = trainSpots['daly-city'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['daly-city'][i];
     }
     for (var i = 0; i < adjacentTrains['dublin'].length; i++) { // trains going to dublin
       var estMinutes = adjacentTrains['dublin'][i].minutes;
       var index = avgWestTime - estMinutes;
       ids.push([trainSpots['dublin'][index], 'train-icon-bottom-left', 'train_icon_east.png']);
+      id = trainSpots['dublin'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['dublin'][i];
     }  
   }
 
@@ -1435,22 +1452,30 @@ function getLiveTrainSpotsGreen(station, adjacentTrains) {
       var estMinutes = adjacentTrains['daly-city'][i].minutes;
       var index = avgWestTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['daly-city'][index], 'train-icon-bottom-left', 'train_icon_east.png']);
+      id = trainSpots['daly-city'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['daly-city'][i];
     }
     for (var i = 0; i < adjacentTrains['fremont'].length; i++) { // trains going to fremont
       var estMinutes = adjacentTrains['fremont'][i].minutes;
       var index = avgEastTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['fremont'][index], 'train-icon-top-right', 'train_icon_west.png']);
+      id = trainSpots['fremont'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['fremont'][i];
     }
   } else { // all other stations
     for (var i = 0; i < adjacentTrains['daly-city'].length; i++) { // trains going to daly-city
       var estMinutes = adjacentTrains['daly-city'][i].minutes;
       var index = avgEastTime - estMinutes;
       ids.push([trainSpots['daly-city'][index], 'train-icon-top-right', 'train_icon_west.png']);
+      id = trainSpots['daly-city'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['daly-city'][i];
     }
     for (var i = 0; i < adjacentTrains['fremont'].length; i++) { // trains going to fremont
       var estMinutes = adjacentTrains['fremont'][i].minutes;
       var index = avgWestTime - estMinutes;
       ids.push([trainSpots['fremont'][index], 'train-icon-bottom-left', 'train_icon_east.png']);
+      id = trainSpots['fremont'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['fremont'][i];
     }  
   }
 
@@ -1495,22 +1520,30 @@ function getLiveTrainSpotsOrange(station, adjacentTrains) {
       var estMinutes = adjacentTrains['fremont'][i].minutes;
       var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['fremont'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['fremont'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['fremont'][i];
     }
     for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
       var estMinutes = adjacentTrains['richmond'][i].minutes;
       var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['richmond'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['richmond'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['richmond'][i];
     }
   } else { // all other stations
     for (var i = 0; i < adjacentTrains['fremont'].length; i++) { // trains going to fremont
       var estMinutes = adjacentTrains['fremont'][i].minutes;
       var index = avgNorthTime - estMinutes;
       ids.push([trainSpots['fremont'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['fremont'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['fremont'][i];
     }
     for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
       var estMinutes = adjacentTrains['richmond'][i].minutes;
       var index = avgSouthTime - estMinutes;
       ids.push([trainSpots['richmond'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['richmond'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['richmond'][i];
     }  
   }
 
@@ -1549,22 +1582,30 @@ function getLiveTrainSpotsRed(station, adjacentTrains) {
       var estMinutes = adjacentTrains['millbrae'][i].minutes;
       var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['millbrae'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['millbrae'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['millbrae'][i];
     }
     for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
       var estMinutes = adjacentTrains['richmond'][i].minutes;
       var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['richmond'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['richmond'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['richmond'][i];
     }
   } else { // all other stations
     for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
       var estMinutes = adjacentTrains['millbrae'][i].minutes;
       var index = avgNorthTime - estMinutes;
       ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['millbrae'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['millbrae'][i];
     }
     for (var i = 0; i < adjacentTrains['richmond'].length; i++) { // trains going to richmond
       var estMinutes = adjacentTrains['richmond'][i].minutes;
       var index = avgSouthTime - estMinutes;
       ids.push([trainSpots['richmond'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['richmond'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['richmond'][i];
     }  
   }
 
@@ -1609,26 +1650,54 @@ function getLiveTrainSpotsYellow(station, adjacentTrains) {
       var estMinutes = adjacentTrains['millbrae'][i].minutes;
       var index = avgSouthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['millbrae'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['millbrae'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['millbrae'][i];
     }
     for (var i = 0; i < adjacentTrains['pittsburg'].length; i++) { // trains going to pittsburg
       var estMinutes = adjacentTrains['pittsburg'][i].minutes;
       var index = avgNorthTime - estMinutes; // direction flipped because of end-of-line
       ids.push([trainSpots['pittsburg'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['pittsburg'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['pittsburg'][i];
     }
   } else { // all other stations
     for (var i = 0; i < adjacentTrains['millbrae'].length; i++) { // trains going to millbrae
       var estMinutes = adjacentTrains['millbrae'][i].minutes;
       var index = avgNorthTime - estMinutes;
       ids.push([trainSpots['millbrae'][index], 'train-icon-top-right', 'train_icon_south.png']);
+      id = trainSpots['millbrae'][index] + '_' + 'train-icon-top-right';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['millbrae'][i];
     }
     for (var i = 0; i < adjacentTrains['pittsburg'].length; i++) { // trains going to pittsburg
       var estMinutes = adjacentTrains['pittsburg'][i].minutes;
       var index = avgSouthTime - estMinutes;
       ids.push([trainSpots['pittsburg'][index], 'train-icon-bottom-left', 'train_icon_north.png']);
+      id = trainSpots['pittsburg'][index] + '_' + 'train-icon-bottom-left';
+      TRAIN_INFO_CACHE[id] = adjacentTrains['pittsburg'][i];
     }  
   }
 
   return ids;
+}
+
+function getTrainInfo(id) {
+  /**
+   * Displays information for a train as an alert dialog.
+   *
+   * Args:
+   *   id - key for the train info cache.
+   */
+  var estimate = TRAIN_INFO_CACHE[id];
+  var message;
+  if (estimate != null) {
+    message = 'Next station: {0} in {1} minute(s).\n\nDestination: {2}\nLine: {3}'.format(
+        stationNameDictionaryReverse[estimate.stationName], estimate.minutes,
+        stationNameDictionaryReverse[estimate.destination], estimate.color);
+  } else {
+    message = 'Error - no estimate exists for train. Sorry!';
+  }
+
+  alert(message);
 }
 
 function drawTrains(station, idsAndClassesAndImages) {
@@ -1641,13 +1710,14 @@ function drawTrains(station, idsAndClassesAndImages) {
                                           base name of image file].
    */
   for (var i = 0; i < idsAndClassesAndImages.length; i++) {
-    var cssId = idsAndClassesAndImages[i][0];
-    var cssClass = idsAndClassesAndImages[i][1];
+    var trainDivCssId = idsAndClassesAndImages[i][0];
+    var trainIconCssClass = idsAndClassesAndImages[i][1];
     var imageName = idsAndClassesAndImages[i][2];
-    var trainDiv = $('#' + cssId);
+    var trainDiv = $('#' + trainDivCssId);
+    var clickArg = trainDivCssId + '_' + trainIconCssClass;
     trainDiv.append(
-      '<img class="train-icon {0} {1}" src="/static/bartmap/images/{2}" />'.format(
-        cssClass, station, imageName));
+      '<img class="train-icon {0} {1}" src="/static/bartmap/images/{2}" onclick="getTrainInfo({3})"/>'.format(
+        trainIconCssClass, station, imageName, "'" + clickArg + "'"));
   }
 }
 
