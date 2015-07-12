@@ -32,42 +32,6 @@ var AdjacentStations = function(north, east, south, west) {
   this.west = west;
 }
 
-var AdjacentDepartures = function(north, east, south, west) {
-  this.north = north;
-  this.east = east;
-  this.south = south;
-  this.west = west;
-}
-
-// This dictionary maps the html ids of the stations to the station
-// abbrevations laid out by BART.
-// TODO: do we need this anymore? depends if we want to do anything with the station links
-var stationDictionary = {
-  "ashby": "ashb",
-  "balboa-park": "balb",
-  "civic-center": "civc",
-  "colma": "colm",
-  "daly-city": "daly",
-  "downtown-berkeley": "dbrk",
-  "el-cerrito-del-norte": "deln",
-  "el-cerrito-plaza": "plza",
-  "embarcadero": "embr",
-  "glen-park": "glen",
-  "macarthur": "mcar",
-  "millbrae": "mlbr",
-  "montgomery-st": "mont",
-  "nineteenth-st-oakland": "19th",
-  "north-berkeley": "nbrk",
-  "powell-st": "powl",
-  "richmond": "rich",
-  "san-bruno": "sbrn",
-  "sixteenth-st-mission": "16th",
-  "south-san-francisco": "ssan",
-  "twelfth-st-oakland": "12th",
-  "twentyfourth-st-mission": "24th",
-  "west-oakland": "woak",
-}
-
 var stationNameDictionary = {
   // maps names from Bart API to a standard format
   '12th St. Oakland City Center': 'twelfth-st-oakland',
@@ -510,42 +474,6 @@ function getDeparturesSynchronous(station) {
   return result;
 }
 
-function parseBartXML(xmlData) {
-  $xml = $(xmlData);
-  $rootXml = $xml.find("root");
-  $stationXml = $rootXml.find("station");
-  $etdXml = $stationXml.children("etd");
-
-  var estimates = [];
-  $etdXml.each(function() {
-    $destination = $(this).find("destination").text();
-    $destAbbr = $(this).find("abbr").text();
-    $(this).children("estimate").each(function() {
-      var estimate = new Estimate(
-        $stationXml.find("name").text(), // stationName
-        $stationXml.find("abbr").text(), // stationAbbr
-        $destination, // destination
-        $destAbbr, // destAbbr
-        $(this).find("minutes").text(), // minutes
-        $(this).find("platform").text(), // platform
-        $(this).find("direction").text(), // direction
-        $(this).find("length").text(), // length
-        $(this).find("color").text(), // color
-        $(this).find("hexcolor").text(), // hexColor
-        $(this).find("bikeflag").text() // bikeFlag
-      );
-      estimates.push(estimate);
-    });
-  });
-
-  return estimates;
-}
-
-function showStationInfo(xmlData) {
-  var estimates = parseBartXML(xmlData);
-  console.log("Fetched estimates for {0}.".format(estimates[0].stationName));
-}
-
 function getAdjacentBlueTrains(station, estimates) {
   /**
    * Finds estimates of adjacent trains for a station on the blue line from an array of estimates.
@@ -861,14 +789,6 @@ function getAdjacentYellowTrains(station, estimates) {
     }
   }
 
-  return adjacentEstimates;
-}
-
-function getAdjacentRedTrainsTEST(stationName) {
-  stationAbbr = stationDictionary[stationName];
-  bartData = getDeparturesSynchronous(stationAbbr);
-  estimates = parseBartXML(bartData);
-  adjacentEstimates = getAdjacentRedTrains(stationName, estimates);
   return adjacentEstimates;
 }
 
@@ -1828,12 +1748,6 @@ function run(xmlData) {
 }
 
 $(document).ready(function() {
-  // $(".station").each(function() {
-  //   $(this).click(function() {
-  //     getDepartures(stationDictionary[$(this).attr("id")], showStationInfo);
-  //   });
-  // });
-
   interval = 5*1000; // 5 seconds
   setInterval(getDepartures, interval, 'all', run);
   //getDepartures('all', run);
